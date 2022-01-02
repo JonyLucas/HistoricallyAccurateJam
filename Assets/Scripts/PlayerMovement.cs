@@ -6,8 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 1;
-
     private Rigidbody2D _rigidbody;
+
+    private bool facingRight = true;
+    private float _moveDirection;
 
     private void Awake()
     {
@@ -20,14 +22,36 @@ public class PlayerMovement : MonoBehaviour
         transform.position = Vector3.zero;
     }
 
+    private void Update()
+    {
+        
+    }
+
     private void FixedUpdate()
     {
-        var horizontal = Input.GetAxis("Horizontal");
-        if (horizontal != 0)
+        // Movements
+        _moveDirection = Input.GetAxis("Horizontal");
+        if (_moveDirection != 0)
         {
-            var direction = Vector2.right * horizontal;
+            var direction = Vector2.right * _moveDirection;
             var currentPosition = (Vector2)transform.position;
             _rigidbody.MovePosition(currentPosition + direction * _speed * Time.fixedDeltaTime);
         }
+
+        // Animations
+        if (_moveDirection > 0 && !facingRight)
+        {
+            FlipCharacter();
+        }
+        else if (_moveDirection < 0 && facingRight)
+        {
+            FlipCharacter();
+        }
+    }
+
+    private void FlipCharacter()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 }
