@@ -22,8 +22,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var direction = Vector2.right * Input.GetAxis("Horizontal");
-        var currentPosition = (Vector2)transform.position;
-        _rigidbody.MovePosition(currentPosition + direction * _speed * Time.deltaTime);
+        var horizontal = Input.GetAxis("Horizontal");
+        if (horizontal != 0)
+        {
+            var direction = Vector2.right * horizontal;
+            var currentPosition = (Vector2)transform.position;
+            _rigidbody.MovePosition(currentPosition + direction * _speed * Time.fixedDeltaTime);
+        }
     }
 }
