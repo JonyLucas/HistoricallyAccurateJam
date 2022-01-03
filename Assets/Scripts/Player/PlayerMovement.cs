@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        transform.position = Vector3.zero;
+        //transform.position = Vector3.zero;
     }
 
     private void Update()
@@ -72,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision");
         if (collision.transform.CompareTag("Ground"))
         {
             _canJump = true;
