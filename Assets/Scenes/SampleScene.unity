@@ -2496,7 +2496,7 @@ SpriteRenderer:
   m_SortingLayerID: -1080642963
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -219183032615506791, guid: 19734d40019bb75449c26cb5680204a8, type: 3}
+  m_Sprite: {fileID: -219183032615506791, guid: a758191518ea661439e6eb251876ecac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2616,6 +2616,7 @@ MonoBehaviour:
   _maxArrowCount: 4
   _fireRate: 1
   _arrowPrefab: {fileID: 2594710220706420174, guid: 90ca662e602dc6146af69912fdd71fc4, type: 3}
+  _arrowParent: {fileID: 0}
 --- !u!1 &1663276731
 GameObject:
   m_ObjectHideFlags: 0
