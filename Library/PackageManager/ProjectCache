@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637766866480115612
-    m_Hash: 238244261
+      ticks: 637768589422114590
+    m_Hash: 3588982104
   m_LockFileStatus:
     m_FilePath: D:/Joao/Documents/Unity/HistoricallyAccurateJam/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637766866574376942
-    m_Hash: 201114752
+      ticks: 637768589422353950
+    m_Hash: 152432700
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -630,12 +630,12 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.collab-proxy@1.15.4
+    - packageId: com.unity.collab-proxy@1.15.7
       testable: 0
       isDirectDependency: 1
-      version: 1.15.4
+      version: 1.15.7
       source: 1
-      resolvedPath: D:\Joao\Documents\Unity\HistoricallyAccurateJam\Library\PackageCache\com.unity.collab-proxy@1.15.4
+      resolvedPath: D:\Joao\Documents\Unity\HistoricallyAccurateJam\Library\PackageCache\com.unity.collab-proxy@1.15.7
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Version Control
@@ -748,13 +748,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637726568460000000
+      datePublishedTicks: 637744672890000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-        revision: 1275603954ad33bee601fe2c9a3c787b3d4e4c6b
+        revision: d208594e5483cdf10d303b6ee17df4d6bf58d3de
         path: 
     - packageId: com.unity.ide.rider@2.0.7
       testable: 0

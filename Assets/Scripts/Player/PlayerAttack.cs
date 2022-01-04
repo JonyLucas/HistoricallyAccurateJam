@@ -19,9 +19,18 @@ public class PlayerAttack : MonoBehaviour
 
     private List<GameObject> _playerArrows;
 
+    private PlayerMovement _playerMovement;
+
     private void Awake()
     {
-        _playerArrows = new List<GameObject>();
+        _playerMovement = GetComponent<PlayerMovement>();
+        InitializeArrows();
+       
+    }
+
+    private void InitializeArrows()
+    {
+         _playerArrows = new List<GameObject>();
         for (int i = 0; i < _maxArrowCount; i++)
         {
             var arrowObj = Instantiate(_arrowPrefab);
@@ -35,12 +44,18 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            var arrow = _playerArrows.FirstOrDefault(x => !x.activeInHierarchy);
-            if (arrow != null)
-            {
-                arrow.transform.position = transform.position;
-                arrow.SetActive(true);
-            }
+            ShootArrows();
+        }
+    }
+
+    private void ShootArrows()
+    {
+        var arrow = _playerArrows.FirstOrDefault(x => !x.activeInHierarchy);
+        if (arrow != null)
+        {
+            arrow.transform.position = transform.position;
+            arrow.GetComponent<ArrowMovement>().MoveDirection = _playerMovement.FacingRight ? Vector2.right : Vector2.left;
+            arrow.SetActive(true);
         }
     }
 }

@@ -54,9 +54,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Props\Shots\ArrowMovement.cs" />
+    <Compile Include="Assets\Scripts\Props\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
-    <Compile Include="Assets\Scripts\Props\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

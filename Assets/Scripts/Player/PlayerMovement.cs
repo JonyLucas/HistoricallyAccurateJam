@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     private float _moveDirection;
 
+    public bool FacingRight { get { return _facingRight; } }
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
