@@ -12,24 +12,21 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _renderer;
+    private Animator _animator;
 
     private bool _canJump = true;
     private bool _facingRight = true;
 
     private float _moveDirection;
 
-    public bool FacingRight { get { return _facingRight; } }
+    public bool FacingRight
+    { get { return _facingRight; } }
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _renderer = GetComponent<SpriteRenderer>();
-    }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        //transform.position = Vector3.zero;
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -51,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            _animator.SetBool("isWalking", false);
             _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
         }
     }
@@ -62,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         // Animations
         if (_moveDirection > 0 && !_facingRight || _moveDirection < 0 && _facingRight)
         {
+            _animator.SetBool("isWalking", true);
             FlipSprite();
         }
     }
