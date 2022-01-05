@@ -8,8 +8,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField]
     private float _maxArrowCount = 4;
 
-    //[SerializeField]
-    //private float _fireRate = 1f;
+    [SerializeField]
+    private float _fireRate = 1f;
 
     [SerializeField]
     private GameObject _arrowPrefab;
@@ -21,6 +21,8 @@ public class PlayerAttack : MonoBehaviour
     private Animator _animator;
 
     private float _animationDuration;
+
+    private bool _canShoot = true;
 
     private void Awake()
     {
@@ -50,8 +52,9 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && _canShoot)
         {
+            StartCoroutine(FireRateCoroutine());
             ShootArrows();
         }
     }
@@ -64,6 +67,13 @@ public class PlayerAttack : MonoBehaviour
             _animator.SetTrigger("shoot");
             StartCoroutine(ShootCoroutine(arrow));
         }
+    }
+
+    private IEnumerator FireRateCoroutine()
+    {
+        _canShoot = false;
+        yield return new WaitForSeconds(_fireRate);
+        _canShoot = true;
     }
 
     private IEnumerator ShootCoroutine(GameObject arrow)

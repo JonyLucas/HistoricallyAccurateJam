@@ -33,6 +33,7 @@ public class ArrowMovement : MonoBehaviour
         _speed = _originalSpeed;
         _gravity = _originalGravity;
         _afterShot = true;
+        _renderer.flipX = MoveDirection == Vector2.left;
     }
 
     private void OnDisable()
