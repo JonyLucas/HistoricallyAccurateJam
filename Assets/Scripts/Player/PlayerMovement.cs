@@ -16,11 +16,15 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _canJump = true;
     private bool _facingRight = true;
+    private bool _isMoving = false;
 
     private float _moveDirection;
 
     public bool FacingRight
     { get { return _facingRight; } }
+
+    private bool IsMoving
+    { get { return _isMoving; } }
 
     private void Awake()
     {
@@ -48,19 +52,21 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            _animator.SetBool("isWalking", false);
+            _isMoving = false;
+            _animator.SetBool("isWalking", _isMoving);
             _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
         }
     }
 
     private void Movement()
     {
+        _isMoving = true;
         _rigidbody.velocity = new Vector2(_moveDirection * _speed, _rigidbody.velocity.y);
+        _animator.SetBool("isWalking", _isMoving);
 
         // Animations
         if (_moveDirection > 0 && !_facingRight || _moveDirection < 0 && _facingRight)
         {
-            _animator.SetBool("isWalking", true);
             FlipSprite();
         }
     }
