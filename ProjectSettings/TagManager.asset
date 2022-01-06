@@ -47,9 +47,21 @@ TagManager:
   - name: Background
     uniqueID: 3589195069
     locked: 0
+  - name: FarHills
+    uniqueID: 3527721583
+    locked: 0
+  - name: CloseHills
+    uniqueID: 218778675
+    locked: 0
+  - name: Woods
+    uniqueID: 1787377699
+    locked: 0
   - name: Foreground
     uniqueID: 3847604783
     locked: 0
-  - name: Player
+  - name: Characters
     uniqueID: 3214324333
+    locked: 0
+  - name: Props
+    uniqueID: 1369261925
     locked: 0

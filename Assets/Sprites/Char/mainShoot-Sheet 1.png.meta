@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 268d9e931d2126f4bbf9e64acf1e40d4
+guid: 79201d7795ee07742ace066d5af13240
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 960685130592029790
-    second: mainDeath-Sheet_0
+      213: 2257654364200830853
+    second: mainShoot-Sheet 1_0
   - first:
-      213: -7965167288998240103
-    second: mainDeath-Sheet_1
+      213: -363163830776161728
+    second: mainShoot-Sheet 1_1
   - first:
-      213: -8119040994097297741
-    second: mainDeath-Sheet_2
+      213: 4166163659068698000
+    second: mainShoot-Sheet 1_2
   - first:
-      213: -7243036340781611143
-    second: mainDeath-Sheet_3
+      213: -4262597486616437718
+    second: mainShoot-Sheet 1_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +127,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mainDeath-Sheet_0
+      name: mainShoot-Sheet 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5c00fd490a055d00800000000000000
-      internalID: 960685130592029790
+      spriteID: 5870dc3ceacc45f10800000000000000
+      internalID: 2257654364200830853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainDeath-Sheet_1
+      name: mainShoot-Sheet 1_1
       rect:
         serializedVersion: 2
         x: 32
@@ -162,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 990e2ba4d8a067190800000000000000
-      internalID: -7965167288998240103
+      spriteID: 04a11578b68c5faf0800000000000000
+      internalID: -363163830776161728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainDeath-Sheet_2
+      name: mainShoot-Sheet 1_2
       rect:
         serializedVersion: 2
         x: 64
@@ -183,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b60ffd7b3f535f80800000000000000
-      internalID: -8119040994097297741
+      spriteID: 09d6eee46cf21d930800000000000000
+      internalID: 4166163659068698000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainDeath-Sheet_3
+      name: mainShoot-Sheet 1_3
       rect:
         serializedVersion: 2
         x: 96
@@ -204,8 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9778774c2d09b7b90800000000000000
-      internalID: -7243036340781611143
+      spriteID: a2c11cd8b2638d4c0800000000000000
+      internalID: -4262597486616437718
       vertices: []
       indices: 
       edges: []
