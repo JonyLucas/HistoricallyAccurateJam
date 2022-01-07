@@ -22,4 +22,9 @@ public class GunshotMovement : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    private void OnBecameInvisible()
+    {
+        gameObject.SetActive(false);
+    }
 }
