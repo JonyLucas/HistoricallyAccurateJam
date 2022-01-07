@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.UI.Cutscene
@@ -26,8 +27,10 @@ namespace Game.UI.Cutscene
         [SerializeField]
         private GameObject _textObject;
 
-        private TMP_Text _textComponent;
+        [SerializeField]
+        private string _nextSceneName;
 
+        private TMP_Text _textComponent;
         private TypewriterEffect _typewriter;
 
         private void Start()
@@ -55,11 +58,16 @@ namespace Game.UI.Cutscene
                 }
                 else
                 {
-                    _nextButton.SetActive(false);
+                    if (!string.IsNullOrEmpty(_nextSceneName))
+                    {
+                        SceneManager.LoadScene(_nextSceneName);
+                    }
+                    else
+                    {
+                        _nextButton.SetActive(false);
+                    }
                 }
             }
-
-            _previousButton.SetActive(true);
             UpdateFrame();
         }
 

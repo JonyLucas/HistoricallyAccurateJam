@@ -35,7 +35,6 @@ namespace Game.Enemy
             _player = GameObject.FindGameObjectWithTag("Player");
             _renderer = GetComponent<SpriteRenderer>();
             InitializeShots();
-            CalculatePlayerDistance();
             StartCoroutine(ShootCoroutine());
         }
 
@@ -56,21 +55,25 @@ namespace Game.Enemy
 
         private void FixedUpdate()
         {
-            CalculatePlayerDistance();
-            var yDistance = Mathf.Floor(_distance.y);
-            if (Mathf.Abs(yDistance) < _minYDistance)
+            if (_isVisible)
             {
-                _canShoot = true;
-            }
-            else
-            {
-                _canShoot = false;
+                _distance = transform.position - _player.transform.position;
+                var yDistance = Mathf.Floor(_distance.y);
+
+                if (Mathf.Abs(yDistance) < _minYDistance)
+                {
+                    FacePlayer();
+                    _canShoot = true;
+                }
+                else
+                {
+                    _canShoot = false;
+                }
             }
         }
 
-        private void CalculatePlayerDistance()
+        private void FacePlayer()
         {
-            _distance = transform.position - _player.transform.position;
             if (_distance.x > 0)
             {
                 _isFacingLeft = true;
