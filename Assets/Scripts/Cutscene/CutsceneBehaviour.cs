@@ -17,41 +17,73 @@ public class CutsceneBehaviour : MonoBehaviour
     private Image _uiImage;
 
     [SerializeField]
+    private GameObject _nextButton;
+
+    [SerializeField]
+    private GameObject _previousButton;
+
+    [SerializeField]
     private GameObject _textObject;
 
     private TMP_Text _textComponent;
+
+    private TypewriterEffect _typewriter;
 
     private void Start()
     {
         _frames = _cutsceneFrame.Frames;
         _currentFrame = _frames.FirstOrDefault();
         _textComponent = _textObject.GetComponent<TMP_Text>();
+        _textComponent.text = "";
+        _typewriter = GetComponent<TypewriterEffect>();
+
+        _previousButton.SetActive(false);
+        _nextButton.SetActive(true);
+
         UpdateFrame();
     }
 
     public void NextFrame()
     {
-        var index = _frames.IndexOf(_currentFrame);
-        if (index < _frames.Count - 1)
+        if (!_typewriter.IsTyping)
         {
-            _currentFrame = _frames[index + 1];
+            var index = _frames.IndexOf(_currentFrame);
+            if (index < _frames.Count - 1)
+            {
+                _currentFrame = _frames[index + 1];
+            }
+            else
+            {
+                _nextButton.SetActive(false);
+            }
         }
+
+        _previousButton.SetActive(true);
         UpdateFrame();
     }
 
     public void PreviousFrame()
     {
-        var index = _frames.IndexOf(_currentFrame);
-        if (index > 0)
+        if (!_typewriter.IsTyping)
         {
-            _currentFrame = _frames[index - 1];
+            var index = _frames.IndexOf(_currentFrame);
+            if (index > 0)
+            {
+                _currentFrame = _frames[index - 1];
+            }
+            else
+            {
+                _previousButton.SetActive(false);
+            }
         }
+
+        _nextButton.SetActive(true);
         UpdateFrame();
     }
 
     private void UpdateFrame()
     {
-        _textComponent.text = _currentFrame.Text;
+        _typewriter.Run(_currentFrame.Text, _textComponent);
         _uiImage.sprite = _currentFrame.Image;
     }
 }

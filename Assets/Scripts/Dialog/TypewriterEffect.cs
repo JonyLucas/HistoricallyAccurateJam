@@ -2,34 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Text;
 
 public class TypewriterEffect : MonoBehaviour
 {
     [SerializeField]
     private float _typeSpeed = 50f;
+
+    private bool _isTyping = false;
+
+    public bool IsTyping
+    { get { return _isTyping; } }
+
     public void Run(string textToType, TMP_Text textLabel)
     {
-        StartCoroutine(TypeText(textToType, textLabel));
+        if (!_isTyping)
+        {
+            textLabel.text = "";
+            StartCoroutine(TypeText(textToType, textLabel));
+        }
+        else
+        {
+            StopWriting();
+        }
+    }
+
+    public void StopWriting()
+    {
+        _isTyping = false;
     }
 
     private IEnumerator TypeText(string textToType, TMP_Text textLabel)
     {
-        yield return new WaitForSeconds(2);
-
-        float t = 0;
         int charIndex = 0;
+        var strBuilder = new StringBuilder();
+        _isTyping = true;
 
-        while(charIndex < textToType.Length)
+        while (charIndex < textToType.Length && _isTyping)
         {
-            t += Time.deltaTime * _typeSpeed;
-            charIndex = Mathf.FloorToInt(t);
-            charIndex = Mathf.Clamp(charIndex, 0, textToType.Length);
+            strBuilder.Append(textToType[charIndex]);
+            charIndex++;
+            textLabel.text = strBuilder.ToString();
 
-            textLabel.text = textToType.Substring(0, charIndex);
-
-            yield return null;
+            yield return new WaitForSeconds(_typeSpeed);
         }
 
         textLabel.text = textToType;
+        _isTyping = false;
     }
 }
