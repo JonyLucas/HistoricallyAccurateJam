@@ -1,30 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game.Player;
 using UnityEngine;
 
-public class GunshotMovement : MonoBehaviour
+namespace Game.Props
 {
-    [SerializeField]
-    private float _speed = 10;
-
-    public Vector2 MoveDirection { get; set; } = Vector2.left;
-
-    private void FixedUpdate()
+    public class GunshotMovement : MonoBehaviour
     {
-        transform.Translate(MoveDirection * _speed * Time.fixedDeltaTime);
-    }
+        [SerializeField]
+        private float _speed = 10;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.CompareTag("Player"))
+        public Vector2 MoveDirection { get; set; } = Vector2.left;
+
+        private void FixedUpdate()
         {
-            collision.gameObject.GetComponent<PlayerHealth>().Damage();
+            transform.Translate(MoveDirection * _speed * Time.fixedDeltaTime);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.transform.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<PlayerHealth>().Damage();
+                gameObject.SetActive(false);
+            }
+        }
+
+        private void OnBecameInvisible()
+        {
             gameObject.SetActive(false);
         }
-    }
-
-    private void OnBecameInvisible()
-    {
-        gameObject.SetActive(false);
     }
 }

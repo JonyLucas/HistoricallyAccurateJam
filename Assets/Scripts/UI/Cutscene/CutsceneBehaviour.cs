@@ -1,89 +1,91 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CutsceneBehaviour : MonoBehaviour
+namespace Game.UI.Cutscene
 {
-    [SerializeField]
-    private CutsceneFrame _cutsceneFrame;
-
-    private List<Frame> _frames;
-    private Frame _currentFrame;
-
-    [SerializeField]
-    private Image _uiImage;
-
-    [SerializeField]
-    private GameObject _nextButton;
-
-    [SerializeField]
-    private GameObject _previousButton;
-
-    [SerializeField]
-    private GameObject _textObject;
-
-    private TMP_Text _textComponent;
-
-    private TypewriterEffect _typewriter;
-
-    private void Start()
+    public class CutsceneBehaviour : MonoBehaviour
     {
-        _frames = _cutsceneFrame.Frames;
-        _currentFrame = _frames.FirstOrDefault();
-        _textComponent = _textObject.GetComponent<TMP_Text>();
-        _textComponent.text = "";
-        _typewriter = GetComponent<TypewriterEffect>();
+        [SerializeField]
+        private CutsceneFrame _cutsceneFrame;
 
-        _previousButton.SetActive(false);
-        _nextButton.SetActive(true);
+        private List<Frame> _frames;
+        private Frame _currentFrame;
 
-        UpdateFrame();
-    }
+        [SerializeField]
+        private Image _uiImage;
 
-    public void NextFrame()
-    {
-        if (!_typewriter.IsTyping)
+        [SerializeField]
+        private GameObject _nextButton;
+
+        [SerializeField]
+        private GameObject _previousButton;
+
+        [SerializeField]
+        private GameObject _textObject;
+
+        private TMP_Text _textComponent;
+
+        private TypewriterEffect _typewriter;
+
+        private void Start()
         {
-            var index = _frames.IndexOf(_currentFrame);
-            if (index < _frames.Count - 1)
-            {
-                _currentFrame = _frames[index + 1];
-            }
-            else
-            {
-                _nextButton.SetActive(false);
-            }
+            _frames = _cutsceneFrame.Frames;
+            _currentFrame = _frames.FirstOrDefault();
+            _textComponent = _textObject.GetComponent<TMP_Text>();
+            _textComponent.text = "";
+            _typewriter = GetComponent<TypewriterEffect>();
+
+            _previousButton.SetActive(false);
+            _nextButton.SetActive(true);
+
+            UpdateFrame();
         }
 
-        _previousButton.SetActive(true);
-        UpdateFrame();
-    }
-
-    public void PreviousFrame()
-    {
-        if (!_typewriter.IsTyping)
+        public void NextFrame()
         {
-            var index = _frames.IndexOf(_currentFrame);
-            if (index > 0)
+            if (!_typewriter.IsTyping)
             {
-                _currentFrame = _frames[index - 1];
+                var index = _frames.IndexOf(_currentFrame);
+                if (index < _frames.Count - 1)
+                {
+                    _currentFrame = _frames[index + 1];
+                }
+                else
+                {
+                    _nextButton.SetActive(false);
+                }
             }
-            else
-            {
-                _previousButton.SetActive(false);
-            }
+
+            _previousButton.SetActive(true);
+            UpdateFrame();
         }
 
-        _nextButton.SetActive(true);
-        UpdateFrame();
-    }
+        public void PreviousFrame()
+        {
+            if (!_typewriter.IsTyping)
+            {
+                var index = _frames.IndexOf(_currentFrame);
+                if (index > 0)
+                {
+                    _currentFrame = _frames[index - 1];
+                }
+                else
+                {
+                    _previousButton.SetActive(false);
+                }
+            }
 
-    private void UpdateFrame()
-    {
-        _typewriter.Run(_currentFrame.Text, _textComponent);
-        _uiImage.sprite = _currentFrame.Image;
+            _nextButton.SetActive(true);
+            UpdateFrame();
+        }
+
+        private void UpdateFrame()
+        {
+            _typewriter.Run(_currentFrame.Text, _textComponent);
+            _uiImage.sprite = _currentFrame.Image;
+        }
     }
 }

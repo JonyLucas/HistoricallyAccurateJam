@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+namespace Game.Enemy
 {
-    public void Damage()
+    public class EnemyHealth : MonoBehaviour
     {
-        Destroy(gameObject);
+        public void Damage()
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -1,44 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game.Player;
 using UnityEngine;
 
-public class BackgroundMovement : MonoBehaviour
+namespace Game.Enviroment
 {
-    [SerializeField]
-    private float _speed = 1;
-
-    [SerializeField]
-    private float _xTranslation;
-
-    private PlayerMovement _movementScript;
-
-    private Vector2 _moveDirection;
-
-    private void Start()
+    public class BackgroundMovement : MonoBehaviour
     {
-        var player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        [SerializeField]
+        private float _speed = 1;
+
+        [SerializeField]
+        private float _xTranslation;
+
+        private PlayerMovement _movementScript;
+
+        private Vector2 _moveDirection;
+
+        private void Start()
         {
-            _movementScript = player.GetComponent<PlayerMovement>();
+            var player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                _movementScript = player.GetComponent<PlayerMovement>();
+            }
         }
-    }
 
-    private void FixedUpdate()
-    {
-        if (_movementScript != null && _movementScript.IsMoving)
+        private void FixedUpdate()
         {
-            _moveDirection = !_movementScript.IsFacingRight ? Vector2.right : Vector2.left;
-            transform.Translate(_moveDirection * _speed * Time.fixedDeltaTime);
+            if (_movementScript != null && _movementScript.IsMoving)
+            {
+                _moveDirection = !_movementScript.IsFacingRight ? Vector2.right : Vector2.left;
+                transform.Translate(_moveDirection * _speed * Time.fixedDeltaTime);
+            }
         }
-    }
 
-    private void OnBecameInvisible()
-    {
-        if (_movementScript != null)
+        private void OnBecameInvisible()
         {
-            var newPosition = transform.position;
-            newPosition.x += _movementScript.IsFacingRight ? _xTranslation * 2 : -_xTranslation * 2;
-            transform.position = newPosition;
+            if (_movementScript != null)
+            {
+                var newPosition = transform.position;
+                newPosition.x += _movementScript.IsFacingRight ? _xTranslation * 2 : -_xTranslation * 2;
+                transform.position = newPosition;
+            }
         }
     }
 }

@@ -12,4 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2d76d39e5dd504c861cbd9c649887a, type: 3}
   m_Name: 3Cutscene
   m_EditorClassIdentifier: 
-  _frames: []
+  _frames:
+  - _image: {fileID: 21300000, guid: 2c77fd52d865a574e983192c084f1b5a, type: 3}
+    _text: "February, 10th, 1756 <br>Near S\xE3o Gabriel, more than 3,000 of Spanish
+      and Portuguese soldiers fought the Guarani Battle of Caiboat\xE9.  <br>In less
+      than two hours, more than a 1,500 of Guarani people were killed by the army,
+      even after surrending themselves, and hundreds of others were arrested, tortured
+      and killed later. The europeans suffered 4 deaths."
+  - _image: {fileID: 21300000, guid: df58d9328dd861f4ba40eaee947d003f, type: 3}
+    _text: 'Still in this day, the Guarani War is still considered of the the most
+      brutal slaughter in Brazil, and it is a  hallmark of the bloody conquest of
+      South America by Europeans. <br>The attack against Brazilian indigenous peoples
+      is back in force. '
+  - _image: {fileID: 21300000, guid: df58d9328dd861f4ba40eaee947d003f, type: 3}
+    _text: 'Indigenous peoples are dying as Brazilian politicians deliberately allow
+      farmers and soy planters to steal and destroy indigenous territories. The key
+      to the survival and prosperity of indigenous peoples is ensuring that their
+      land remains under their control. '
+  - _image: {fileID: 21300000, guid: 446217968ed2f6b448fd8f07bb7d76f6, type: 3}
+    _text: 'teste dfgdfgdfg '
+  - _image: {fileID: 21300000, guid: 07d23ffc69744e0418147dc5b8460209, type: 3}
+    _text: "\"What counts for us is our land. This is worth more than life. And we
+      are the ones who can sustain nature, who never destroy or pollute our river.
+      We take care of our land, we know its value. We need to protect what our ancestors
+      left us.\"<br> - Manifest of Piara\xE7u, written in 2020 by representatives
+      of 45 indigenous peoples in Brazil"

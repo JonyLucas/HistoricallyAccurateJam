@@ -1,17 +1,20 @@
 using UnityEngine;
 
-[System.Serializable]
-public class Frame
+namespace Game.UI.Cutscene
 {
-    [SerializeField]
-    private Sprite _image;
+    [System.Serializable]
+    public class Frame
+    {
+        [SerializeField]
+        private Sprite _image;
 
-    [SerializeField]
-    private string _text;
+        [SerializeField]
+        private string _text;
 
-    public Sprite Image
-    { get { return _image; } }
+        public Sprite Image
+        { get { return _image; } }
 
-    public string Text
-    { get { return _text; } }
+        public string Text
+        { get { return _text; } }
+    }
 }

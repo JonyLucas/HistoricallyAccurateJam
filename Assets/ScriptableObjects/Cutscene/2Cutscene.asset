@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2d76d39e5dd504c861cbd9c649887a, type: 3}
   m_Name: 2Cutscene
   m_EditorClassIdentifier: 
-  _frames: []
+  _frames:
+  - _image: {fileID: 0}
+    _text: 
+  - _image: {fileID: 21300000, guid: 703f6029ae0b2a246bb65e190b494ad7, type: 3}
+    _text: 
+  - _image: {fileID: 21300000, guid: 514a8aa4b7d66574fab61970604b2c38, type: 3}
+    _text: 

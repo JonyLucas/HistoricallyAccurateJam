@@ -66,13 +66,19 @@
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\DialogUI.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerSoundFx.cs" />
+    <Compile Include="Assets\Scripts\SFX\PlayerSoundFx.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Props\Background\BackgroundMovement.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\TypewriterEffect.cs" />
     <Compile Include="Assets\Scripts\Collectables\CollectableAnimations.cs" />
     <Compile Include="Assets\Scripts\Collectables\CollectableActions.cs" />
-    <Compile Include="Assets\Scripts\SFX\SFX.cs" />
+    <Compile Include="Assets\Scripts\Observers\Events\GameEvent.cs" />
+    <Compile Include="Assets\Scripts\Observers\Events\IntGameEvent.cs" />
+    <Compile Include="Assets\Scripts\Observers\Events\GenericGameEvent.cs" />
+    <Compile Include="Assets\Scripts\Observers\Listeners\EventListener.cs" />
+    <Compile Include="Assets\Scripts\Observers\Listeners\GenericEventListener.cs" />
+    <Compile Include="Assets\Scripts\Observers\Listeners\IntEventListener.cs" />
+    <Compile Include="Assets\Scripts\UI\LifeBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -1,42 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game.Enums;
+using Game.Player;
 using UnityEngine;
 
-public class CollectableActions : MonoBehaviour
+namespace Game.Props
 {
-    [SerializeField]
-    private CollectablesType _collectables;
-
-    private PlayerHealth health;
-    private void Awake()
+    public class CollectableActions : MonoBehaviour
     {
-        //_collectables = GetComponent<CollectablesType>();
-    }
+        [SerializeField]
+        private CollectablesType _collectables;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (_collectables == CollectablesType.Banana || _collectables == CollectablesType.Pineapple)
+            if (collision.gameObject.CompareTag("Player"))
             {
-                Regen(collision);
-            }
+                if (_collectables == CollectablesType.Banana || _collectables == CollectablesType.Pineapple)
+                {
+                    Regen(collision);
+                }
 
-            if (_collectables == CollectablesType.Feather)
-            {
-                IncreaseArrows(collision);
+                if (_collectables == CollectablesType.Feather)
+                {
+                    IncreaseArrows(collision);
+                }
             }
         }
-    }
-    private void Regen(Collider2D collision)
-    {
-        collision.gameObject.GetComponent<PlayerHealth>().Heal(_collectables);
-        Destroy(gameObject);
-    }
 
-    private void IncreaseArrows(Collider2D collision)
-    {
-        collision.gameObject.GetComponent<PlayerAttack>().IncreaseArrows();
-        Destroy(gameObject);
+        private void Regen(Collider2D collision)
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().Heal(_collectables);
+            Destroy(gameObject);
+        }
+
+        private void IncreaseArrows(Collider2D collision)
+        {
+            collision.gameObject.GetComponent<PlayerAttack>().IncreaseArrows();
+            Destroy(gameObject);
+        }
     }
 }
