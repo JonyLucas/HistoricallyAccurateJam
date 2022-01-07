@@ -15,13 +15,10 @@ public class PlayerAttack : MonoBehaviour
     private GameObject _arrowPrefab;
 
     private List<GameObject> _playerArrows;
-
     private PlayerMovement _playerMovement;
-
     private Animator _animator;
 
     private float _animationDuration;
-
     private bool _canShoot = true;
 
     private void Awake()
@@ -80,7 +77,7 @@ public class PlayerAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(_animationDuration);
         arrow.transform.position = transform.position;
-        arrow.GetComponent<ArrowMovement>().MoveDirection = _playerMovement.FacingRight ? Vector2.right : Vector2.left;
+        arrow.GetComponent<ArrowMovement>().MoveDirection = _playerMovement.IsFacingRight ? Vector2.right : Vector2.left;
         arrow.SetActive(true);
     }
 }

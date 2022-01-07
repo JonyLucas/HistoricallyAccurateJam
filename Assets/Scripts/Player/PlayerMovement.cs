@@ -15,15 +15,15 @@ public class PlayerMovement : MonoBehaviour
     private Animator _animator;
 
     private bool _canJump = true;
-    private bool _facingRight = true;
+    private bool _isFacingRight = true;
     private bool _isMoving = false;
 
     private float _moveDirection;
 
-    public bool FacingRight
-    { get { return _facingRight; } }
+    public bool IsFacingRight
+    { get { return _isFacingRight; } }
 
-    private bool IsMoving
+    public bool IsMoving
     { get { return _isMoving; } }
 
     private void Awake()
@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetBool("isWalking", _isMoving);
 
         // Animations
-        if (_moveDirection > 0 && !_facingRight || _moveDirection < 0 && _facingRight)
+        if (_moveDirection > 0 && !_isFacingRight || _moveDirection < 0 && _isFacingRight)
         {
             FlipSprite();
         }
@@ -73,8 +73,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FlipSprite()
     {
-        _renderer.flipX = _facingRight;
-        _facingRight = !_facingRight;
+        _renderer.flipX = _isFacingRight;
+        _isFacingRight = !_isFacingRight;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

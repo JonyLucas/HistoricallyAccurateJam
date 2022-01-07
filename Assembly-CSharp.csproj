@@ -55,20 +55,21 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Props\Shots\GunshotMovement.cs" />
-    <Compile Include="Assets\Scripts\Cutscene\CutsceneBehaviour.cs" />
+    <Compile Include="Assets\Scripts\UI\Cutscene\CutsceneBehaviour.cs" />
     <Compile Include="Assets\Scripts\Props\Shots\ArrowMovement.cs" />
     <Compile Include="Assets\Scripts\Props\Camera\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\Cutscene\CutsceneFrame.cs" />
-    <Compile Include="Assets\Scripts\Cutscene\Frame.cs" />
+    <Compile Include="Assets\Scripts\UI\Cutscene\CutsceneFrame.cs" />
+    <Compile Include="Assets\Scripts\UI\Cutscene\Frame.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
-    <Compile Include="Assets\Scripts\Dialog\DialogUI.cs" />
+    <Compile Include="Assets\Scripts\UI\Dialog\DialogUI.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Props\Background\BackgroundMovement.cs" />
-    <Compile Include="Assets\Scripts\Dialog\TypewriterEffect.cs" />
+    <Compile Include="Assets\Scripts\UI\Dialog\TypewriterEffect.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSoundFx.cs" />
     <Compile Include="Assets\Scripts\Enums\CollectablesType.cs" />
+    <Compile Include="Assets\Scripts\UI\TitleScreen\TitleScreenBackgroundAnimation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
