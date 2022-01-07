@@ -103,5 +103,10 @@ namespace Game.Player
             arrowObj.SetActive(false);
             _playerArrows.Add(arrowObj);
         }
+
+        public void PlayerDeath()
+        {
+            enabled = false;
+        }
     }
 }

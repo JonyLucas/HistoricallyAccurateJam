@@ -17,27 +17,33 @@ namespace Game.Player
         [SerializeField]
         private IntGameEvent _event;
 
+        [SerializeField]
+        private GameEvent _playerDeathEvent;
+
         private Animator _animator;
-        private PlayerMovement _moveScript;
 
         private void Awake()
         {
             _lives = _maxLives;
             _animator = GetComponent<Animator>();
-            _moveScript = GetComponent<PlayerMovement>();
         }
 
         public void Damage()
         {
             _lives--;
-            _event.OnOcurred(_lives);
 
             if (_lives <= 0)
             {
+                if (_lives < 0)
+                {
+                    _lives = 0;
+                }
+
                 _animator.SetTrigger("death");
-                _moveScript.enabled = false;
-                //Destroy(gameObject);
+                _playerDeathEvent.OnOcurred();
             }
+
+            _event.OnOcurred(_lives);
         }
 
         public void Heal(CollectablesType collectablesType)

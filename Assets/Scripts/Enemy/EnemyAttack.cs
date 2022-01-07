@@ -27,6 +27,8 @@ namespace Game.Enemy
 
         private bool _isFacingLeft = true;
         private bool _canShoot = false;
+        private bool _playerAlive = true;
+        private bool _isVisible = false;
 
         private void Start()
         {
@@ -60,6 +62,10 @@ namespace Game.Enemy
             {
                 _canShoot = true;
             }
+            else
+            {
+                _canShoot = false;
+            }
         }
 
         private void CalculatePlayerDistance()
@@ -79,10 +85,10 @@ namespace Game.Enemy
 
         private IEnumerator ShootCoroutine()
         {
-            while (true)
+            while (_playerAlive)
             {
                 yield return new WaitForSeconds(_fireRate);
-                if (_canShoot)
+                if (_canShoot && _isVisible)
                 {
                     var shot = _enemyShots.FirstOrDefault(x => !x.activeInHierarchy);
                     if (shot != null)
@@ -93,6 +99,21 @@ namespace Game.Enemy
                     }
                 }
             }
+        }
+
+        private void OnBecameInvisible()
+        {
+            _isVisible = false;
+        }
+
+        private void OnBecameVisible()
+        {
+            _isVisible = true;
+        }
+
+        public void PlayerDeath()
+        {
+            _playerAlive = false;
         }
     }
 }

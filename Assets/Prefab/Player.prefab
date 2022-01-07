@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4527445841175158649}
   - component: {fileID: 4527445841175158630}
   - component: {fileID: 4527445840629805144}
+  - component: {fileID: 72879497}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -200,6 +201,7 @@ MonoBehaviour:
   _lives: 2
   _maxLives: 4
   _event: {fileID: 11400000, guid: 95e80de862eca3a4e980ee0f282e4782, type: 2}
+  _playerDeathEvent: {fileID: 11400000, guid: ad077016b2b74ee41ae5ed8c7a5e5261, type: 2}
 --- !u!82 &4527445840629805144
 AudioSource:
   m_ObjectHideFlags: 0
@@ -296,3 +298,43 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &72879497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4527445841175158654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197a5deb04cc3b247824b281095e88d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: ad077016b2b74ee41ae5ed8c7a5e5261, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4527445841175158649}
+        m_TargetAssemblyTypeName: Game.Player.PlayerAttack, Assembly-CSharp
+        m_MethodName: PlayerDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4527445841175158651}
+        m_TargetAssemblyTypeName: Game.Player.PlayerMovement, Assembly-CSharp
+        m_MethodName: PlayerDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

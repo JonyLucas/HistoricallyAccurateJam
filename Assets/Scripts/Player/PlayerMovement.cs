@@ -54,10 +54,15 @@ namespace Game.Player
             }
             else
             {
-                _isMoving = false;
-                _animator.SetBool("isWalking", _isMoving);
-                _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                StopMovement();
             }
+        }
+
+        public void StopMovement()
+        {
+            _isMoving = false;
+            _animator.SetBool("isWalking", _isMoving);
+            _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
         }
 
         private void Movement()
@@ -85,6 +90,12 @@ namespace Game.Player
             {
                 _canJump = true;
             }
+        }
+
+        public void PlayerDeath()
+        {
+            StopMovement();
+            enabled = false;
         }
     }
 }
