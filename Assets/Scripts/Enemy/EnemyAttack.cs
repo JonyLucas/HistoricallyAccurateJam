@@ -25,6 +25,8 @@ public class EnemyAttack : MonoBehaviour
     private bool _isFacingLeft = true;
     private bool _canShoot = false;
 
+    public SFX Shot;
+
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -87,6 +89,7 @@ public class EnemyAttack : MonoBehaviour
                     shot.GetComponent<GunshotMovement>().MoveDirection = !_isFacingLeft ? Vector2.right : Vector2.left;
                     shot.transform.position = transform.position;
                     shot.SetActive(true);
+                    //Shot.PlayGunShot();
                 }
             }
         }

@@ -14,6 +14,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField]
     private GameObject _arrowPrefab;
 
+    [SerializeField]
+    private PlayerSoundFx _soundFx;
+
+    private AudioSource _audioSource;
+    private GameObject _arrowParent;
+
     private List<GameObject> _playerArrows;
     private PlayerMovement _playerMovement;
     private Animator _animator;
@@ -23,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _playerMovement = GetComponent<PlayerMovement>();
         _animator = GetComponent<Animator>();
         _animationDuration = _animator.runtimeAnimatorController
@@ -34,13 +41,13 @@ public class PlayerAttack : MonoBehaviour
 
     private void InitializeArrows()
     {
-        var arrowParent = new GameObject("Arrows");
-        arrowParent.transform.position = Vector3.zero;
+        _arrowParent = new GameObject("Arrows");
+        _arrowParent.transform.position = Vector3.zero;
 
         _playerArrows = new List<GameObject>();
         for (int i = 0; i < _maxArrowCount; i++)
         {
-            var arrowObj = Instantiate(_arrowPrefab, arrowParent.transform);
+            var arrowObj = Instantiate(_arrowPrefab, _arrowParent.transform);
             arrowObj.SetActive(false);
             _playerArrows.Add(arrowObj);
         }
@@ -76,8 +83,20 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator ShootCoroutine(GameObject arrow)
     {
         yield return new WaitForSeconds(_animationDuration);
+
         arrow.transform.position = transform.position;
         arrow.GetComponent<ArrowMovement>().MoveDirection = _playerMovement.IsFacingRight ? Vector2.right : Vector2.left;
         arrow.SetActive(true);
+
+        _audioSource.clip = _soundFx.GetRandomSound();
+        _audioSource.Play();
+    }
+
+    public void IncreaseArrows()
+    {
+        _maxArrowCount++;
+        var arrowObj = Instantiate(_arrowPrefab, _arrowParent.transform);
+        arrowObj.SetActive(false);
+        _playerArrows.Add(arrowObj);
     }
 }

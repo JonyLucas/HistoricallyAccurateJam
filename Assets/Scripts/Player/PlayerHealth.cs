@@ -5,25 +5,44 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
-    private int lives = 3;
+    private int _lives = 4;
+
+    [SerializeField] 
+    private int _maxLives = 4;
 
     private Animator _animator;
     private PlayerMovement _moveScript;
 
     private void Awake()
     {
+        _lives = _maxLives;
         _animator = GetComponent<Animator>();
         _moveScript = GetComponent<PlayerMovement>();
     }
 
     public void Damage()
     {
-        lives--;
-        if (lives <= 0)
+        _lives--;
+        if (_lives <= 0)
         {
             _animator.SetTrigger("death");
             _moveScript.enabled = false;
             //Destroy(gameObject);
+        }
+    }
+
+    public void Heal(CollectablesType collectablesType)
+    {
+        if (_lives < _maxLives)
+        {
+            if(collectablesType == CollectablesType.Pineapple)
+            {
+                _lives = _maxLives;
+            }
+            else if(collectablesType == CollectablesType.Banana)
+            {
+                _lives++;
+            }
         }
     }
 }
