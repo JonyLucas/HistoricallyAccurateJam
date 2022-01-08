@@ -66,7 +66,7 @@ namespace Game.Player
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F) && _canShoot)
+            if (Input.GetKeyDown(KeyCode.F) && _canShoot && !_playerMovement.IsCrouching)
             {
                 StartCoroutine(FireRateCoroutine());
                 ShootArrows();

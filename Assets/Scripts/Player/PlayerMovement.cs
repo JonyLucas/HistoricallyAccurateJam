@@ -37,6 +37,9 @@ namespace Game.Player
         public bool IsMoving
         { get { return _isMoving; } }
 
+        public bool IsCrouching
+        { get { return _isCrouching; } }
+
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
@@ -71,7 +74,7 @@ namespace Game.Player
             }
 
             _moveDirection = Input.GetAxisRaw("Vertical");
-            if (_moveDirection < 0 && !_isMoving)
+            if (_moveDirection < 0 && !_isMoving && _canJump)
             {
                 Crouching();
             }

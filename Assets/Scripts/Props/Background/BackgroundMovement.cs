@@ -28,16 +28,13 @@ namespace Game.Enviroment
             {
                 var moveDirection = !_movementScript.IsFacingRight ? Vector2.right : Vector2.left;
                 transform.Translate(moveDirection * _speed * Time.deltaTime);
-            }
-        }
-
-        private void OnBecameInvisible()
-        {
-            if (_movementScript != null)
-            {
-                var newPosition = transform.position;
-                newPosition.x += _movementScript.IsFacingRight ? _xTranslation * 2 : -_xTranslation * 2;
-                transform.position = newPosition;
+                var playerDistance = _movementScript.transform.position - transform.position;
+                if (Mathf.Abs(playerDistance.x) >= (_xTranslation * 1.1))
+                {
+                    var newPosition = transform.position;
+                    newPosition.x += playerDistance.x > 0 ? _xTranslation * 2 : -_xTranslation * 2;
+                    transform.position = newPosition;
+                }
             }
         }
     }

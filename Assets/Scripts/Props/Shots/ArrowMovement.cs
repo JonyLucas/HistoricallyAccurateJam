@@ -1,6 +1,7 @@
 using Game.Audio;
 using Game.Enemy;
 using Game.Player;
+using System.Linq;
 using UnityEngine;
 
 namespace Game.Props
@@ -33,7 +34,10 @@ namespace Game.Props
         {
             _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             _renderer = GetComponent<SpriteRenderer>();
-            _trigger = GetComponent<BoxCollider2D>();
+
+            _rigidbody = GetComponent<Rigidbody2D>();
+            _trigger = GetComponents<BoxCollider2D>().FirstOrDefault(x => x.isTrigger);
+            _collider = GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger);
         }
 
         private void OnEnable()
@@ -42,12 +46,9 @@ namespace Game.Props
             _gravity = _originalGravity;
             _afterShot = true;
             _renderer.flipX = MoveDirection == Vector2.left;
-        }
 
-        private void OnDisable()
-        {
-            Destroy(_rigidbody);
-            Destroy(_collider);
+            _rigidbody.bodyType = RigidbodyType2D.Kinematic;
+            _collider.enabled = false;
         }
 
         private void FixedUpdate()
@@ -65,12 +66,8 @@ namespace Game.Props
                 _speed = 0;
                 _gravity = 0;
 
-                _rigidbody = gameObject.AddComponent<Rigidbody2D>();
-                _rigidbody.freezeRotation = true;
-
-                _collider = gameObject.AddComponent<BoxCollider2D>();
-                _collider.offset = _trigger.offset;
-                _collider.size = _trigger.size;
+                _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+                _collider.enabled = true;
 
                 collision.transform.GetComponent<EnemyHealth>().Damage();
             }
@@ -98,8 +95,8 @@ namespace Game.Props
         {
             if (collision.transform.CompareTag("Ground"))
             {
-                Destroy(_rigidbody);
-                Destroy(_collider);
+                _rigidbody.bodyType = RigidbodyType2D.Kinematic;
+                _collider.enabled = false;
             }
         }
     }
