@@ -13,8 +13,6 @@ namespace Game.Enviroment
 
         private PlayerMovement _movementScript;
 
-        private Vector2 _moveDirection;
-
         private void Start()
         {
             var player = GameObject.FindGameObjectWithTag("Player");
@@ -28,8 +26,8 @@ namespace Game.Enviroment
         {
             if (_movementScript != null && _movementScript.IsMoving)
             {
-                _moveDirection = !_movementScript.IsFacingRight ? Vector2.right : Vector2.left;
-                transform.Translate(_moveDirection * _speed * Time.deltaTime);
+                var moveDirection = !_movementScript.IsFacingRight ? Vector2.right : Vector2.left;
+                transform.Translate(moveDirection * _speed * Time.deltaTime);
             }
         }
 

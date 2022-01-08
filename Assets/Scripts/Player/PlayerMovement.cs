@@ -27,6 +27,7 @@ namespace Game.Player
         private bool _canJump = true;
         private bool _isFacingRight = true;
         private bool _isMoving = false;
+        private bool _isCrouching = false;
 
         private float _moveDirection;
 
@@ -60,13 +61,25 @@ namespace Game.Player
         {
             // Movements
             _moveDirection = Input.GetAxisRaw("Horizontal");
-            if (_moveDirection != 0)
+            if (_moveDirection != 0 && !_isCrouching)
             {
                 Movement();
             }
             else
             {
                 StopMovement();
+            }
+
+            _moveDirection = Input.GetAxisRaw("Vertical");
+            if (_moveDirection < 0 && !_isMoving)
+            {
+                Crouching();
+            }
+            else
+            {
+                _isCrouching = false;
+                _animator.SetBool("isCrouching", _isCrouching);
+                _rigidbody.simulated = true;
             }
         }
 
@@ -86,14 +99,17 @@ namespace Game.Player
             // Animations
             if (_moveDirection > 0 && !_isFacingRight || _moveDirection < 0 && _isFacingRight)
             {
-                FlipSprite();
+                _renderer.flipX = _isFacingRight;
+                _isFacingRight = !_isFacingRight;
             }
         }
 
-        private void FlipSprite()
+        private void Crouching()
         {
-            _renderer.flipX = _isFacingRight;
-            _isFacingRight = !_isFacingRight;
+            StopMovement();
+            _isCrouching = true;
+            _animator.SetBool("isCrouching", _isCrouching);
+            _rigidbody.simulated = false;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
