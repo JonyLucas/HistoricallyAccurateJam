@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collectables: 2
+  _collectSfx: {fileID: 11400000, guid: aa8dd44f6aa6d034dae5758f010d88d0, type: 2}
 --- !u!61 &4325498816535219475
 BoxCollider2D:
   m_ObjectHideFlags: 0

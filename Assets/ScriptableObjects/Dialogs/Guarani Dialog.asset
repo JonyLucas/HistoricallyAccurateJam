@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8b983280c1f2d42955b47f82add1aa, type: 3}
+  m_Name: Guarani Dialog
+  m_EditorClassIdentifier: 
+  _dialogs:
+  - _charIcon: {fileID: -3034983707036092502, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: Every year the settlers are killing us and taking our land. They
+      arrive, destroy our forests, kill the animals, pollute our waters. They arrive
+      bringing destruction wherever they go.
+  - _charIcon: {fileID: 4853428335236853494, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: We will survive and resist. We don't want war, and this war is not
+      ours, but we must fight.
+  - _charIcon: {fileID: -3034983707036092502, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: 'We will make an attack soon, we will not accept that. '
+  - _charIcon: {fileID: 4853428335236853494, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: Yes, we have been trying for a long time to reach a peace agreement
+      with the colonizers, but we are killed every day by the slavers and soldiers.
+      We are tired...
+  - _charIcon: {fileID: -3034983707036092502, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: Yes, we have been trying for a long time to reach a peace agreement
+      with the colonizers, but we are killed every day by the slavers and soldiers.
+      We are tired...
+  - _charIcon: {fileID: 4853428335236853494, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: If I need to die to protect my people, I'll keep fighting!

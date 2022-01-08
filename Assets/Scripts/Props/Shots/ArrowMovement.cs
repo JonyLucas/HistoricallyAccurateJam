@@ -1,4 +1,6 @@
+using Game.Audio;
 using Game.Enemy;
+using Game.Player;
 using UnityEngine;
 
 namespace Game.Props
@@ -11,6 +13,9 @@ namespace Game.Props
         [SerializeField]
         private float _originalSpeed = 1;
 
+        [SerializeField]
+        private SoundFx _hitSfx;
+
         private float _speed;
         private float _gravity = 1;
 
@@ -20,11 +25,13 @@ namespace Game.Props
         private BoxCollider2D _collider;
         private BoxCollider2D _trigger;
         private SpriteRenderer _renderer;
+        private GameObject _mainCamera;
 
         public Vector2 MoveDirection { get; set; } = Vector2.right;
 
         private void Awake()
         {
+            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             _renderer = GetComponent<SpriteRenderer>();
             _trigger = GetComponent<BoxCollider2D>();
         }
@@ -54,6 +61,7 @@ namespace Game.Props
         {
             if (collision.transform.CompareTag("Enemy"))
             {
+                AudioSource.PlayClipAtPoint(_hitSfx.GetRandomSound(), _mainCamera.transform.position);
                 _speed = 0;
                 _gravity = 0;
 
@@ -69,6 +77,7 @@ namespace Game.Props
             if (collision.transform.CompareTag("Player") && !_afterShot)
             {
                 gameObject.SetActive(false);
+                collision.gameObject.GetComponent<PlayerAttack>().UpdateArrowCount();
             }
         }
 

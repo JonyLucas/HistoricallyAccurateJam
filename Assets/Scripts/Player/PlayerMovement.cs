@@ -1,3 +1,4 @@
+using Game.Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +13,16 @@ namespace Game.Player
         [SerializeField]
         private float _jumpForce = 350;
 
+        [SerializeField]
+        private SoundFx _jumpSfx;
+
+        [SerializeField]
+        private SoundFx _landingSfx;
+
         private Rigidbody2D _rigidbody;
         private SpriteRenderer _renderer;
         private Animator _animator;
+        private AudioSource _audioSource;
 
         private bool _canJump = true;
         private bool _isFacingRight = true;
@@ -30,6 +38,7 @@ namespace Game.Player
 
         private void Awake()
         {
+            _audioSource = GetComponent<AudioSource>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _renderer = GetComponent<SpriteRenderer>();
             _animator = GetComponent<Animator>();
@@ -39,7 +48,10 @@ namespace Game.Player
         {
             if (Input.GetKeyDown(KeyCode.Space) && _canJump)
             {
+                _audioSource.clip = _jumpSfx.GetRandomSound();
+                _audioSource.Play();
                 _canJump = false;
+                _animator.SetBool("isJumping", true);
                 _rigidbody.AddForce(Vector2.up * _jumpForce);
             }
         }
@@ -88,7 +100,13 @@ namespace Game.Player
         {
             if (collision.transform.CompareTag("Ground"))
             {
+                if (!_canJump)
+                {
+                    _audioSource.clip = _landingSfx.GetRandomSound();
+                    _audioSource.Play();
+                }
                 _canJump = true;
+                _animator.SetBool("isJumping", false);
             }
         }
 

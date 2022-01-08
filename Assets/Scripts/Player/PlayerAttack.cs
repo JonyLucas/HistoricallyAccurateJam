@@ -1,5 +1,6 @@
 using Game.Audio;
 using Game.Props;
+using Game.ScriptableObjects.Events;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,10 @@ namespace Game.Player
         private GameObject _arrowPrefab;
 
         [SerializeField]
-        private PlayerSoundFx _soundFx;
+        private SoundFx _soundFx;
+
+        [SerializeField]
+        private IntGameEvent _arrowShootEvent;
 
         private AudioSource _audioSource;
         private GameObject _arrowParent;
@@ -55,12 +59,14 @@ namespace Game.Player
                 arrowObj.SetActive(false);
                 _playerArrows.Add(arrowObj);
             }
+
+            UpdateArrowCount();
         }
 
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.X) && _canShoot)
+            if (Input.GetKeyDown(KeyCode.F) && _canShoot)
             {
                 StartCoroutine(FireRateCoroutine());
                 ShootArrows();
@@ -92,6 +98,8 @@ namespace Game.Player
             arrow.GetComponent<ArrowMovement>().MoveDirection = _playerMovement.IsFacingRight ? Vector2.right : Vector2.left;
             arrow.SetActive(true);
 
+            UpdateArrowCount();
+
             _audioSource.clip = _soundFx.GetRandomSound();
             _audioSource.Play();
         }
@@ -107,6 +115,12 @@ namespace Game.Player
         public void PlayerDeath()
         {
             enabled = false;
+        }
+
+        public void UpdateArrowCount()
+        {
+            var arrowCount = _playerArrows.Where(x => !x.activeInHierarchy).ToList().Count;
+            _arrowShootEvent.OnOcurred(arrowCount);
         }
     }
 }

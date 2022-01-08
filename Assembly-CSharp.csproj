@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,9 +53,6 @@
     <UnityVersion>2020.3.24f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="D:\Arquivos de Programas\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\UI\TitleScreen\TitleScreenBackgroundAnimation.cs" />
     <Compile Include="Assets\Scripts\Scenes\ChangeSceneScript.cs" />
@@ -65,7 +62,7 @@
     <Compile Include="Assets\Scripts\Enums\CollectablesType.cs" />
     <Compile Include="Assets\Scripts\Props\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Observers\Listeners\IntEventListener.cs" />
-    <Compile Include="Assets\Scripts\UI\LifeBar.cs" />
+    <Compile Include="Assets\Scripts\UI\Canvas\LifeBar.cs" />
     <Compile Include="Assets\Scripts\Observers\Listeners\GenericEventListener.cs" />
     <Compile Include="Assets\Scripts\Observers\Listeners\EventListener.cs" />
     <Compile Include="Assets\Scripts\UI\Cutscene\CutsceneFrame.cs" />
@@ -75,7 +72,6 @@
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\DialogUI.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
-    <Compile Include="Assets\Scripts\SFX\PlayerSoundFx.cs" />
     <Compile Include="Assets\Scripts\Observers\Events\GenericGameEvent.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Observers\Events\IntGameEvent.cs" />
@@ -83,6 +79,15 @@
     <Compile Include="Assets\Scripts\Observers\Events\GameEvent.cs" />
     <Compile Include="Assets\Scripts\Props\Background\BackgroundMovement.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\TypewriterEffect.cs" />
+    <Compile Include="Assets\Scripts\SFX\SoundFx.cs" />
+    <Compile Include="Assets\Scripts\SFX\AudioComponent.cs" />
+    <Compile Include="Assets\Scripts\Observers\Events\DialogEvent.cs" />
+    <Compile Include="Assets\Scripts\Observers\Listeners\DialogEventListener.cs" />
+    <Compile Include="Assets\Scripts\UI\Dialog\Dialog.cs" />
+    <Compile Include="Assets\Scripts\UI\Dialog\ScriptableDialog.cs" />
+    <Compile Include="Assets\Scripts\NPCs\DialogNPC.cs" />
+    <Compile Include="Assets\Scripts\UI\Canvas\ArrowCount.cs" />
+    <Compile Include="Assets\Scripts\UI\Canvas\DisablePanelScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

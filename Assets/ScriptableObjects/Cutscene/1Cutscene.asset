@@ -14,20 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frames:
   - _image: {fileID: 21300000, guid: 7c09c127496492f4d869cfe59c2fafa3, type: 3}
-    _text: 'In 1534, the order of the Society of Jesus was founded in Spain to spread
-      the Catholic faith and European customs to the native people of South America. '
-  - _image: {fileID: 21300000, guid: 7c09c127496492f4d869cfe59c2fafa3, type: 3}
+    _text: In 1534, the order of the Society of Jesus was founded in Spain to spread
+      the Catholic faith and European customs to the native people of South America.
+  - _image: {fileID: 21300000, guid: f931ab8799bba384faed31a3f164a6d1, type: 3}
     _text: In the so-called "reductions", the Jesuits gathered the Indians to work
-      in the countryside and in craft and educational activities...
+      in the countryside and in craft and educational activities.
   - _image: {fileID: 21300000, guid: b55f9683144dddd41975f5cb65f93e44, type: 3}
-    _text: In 1750, Portugal and Spain signed the Treaty of Madrid, wich transfered
+    _text: In 1750, Portugal and Spain signed the Treaty of Madrid, which transferred
       Portugal's Colonia de Sacramento to Spain, in exchange for the Seven Reductions
       east of the Uruguay River that was inhabited by more than 30,000 Guarani people.
   - _image: {fileID: 21300000, guid: b55f9683144dddd41975f5cb65f93e44, type: 3}
-    _text: "Given six months to evacuate the territory, the Guarani people refused
-      the idea of leaving the misssion settlementse, and organized by Sep\xE9 Tiaraju,
-      they besieged Portuguese fort of Santo Amaro..."
+    _text: Given six months to evacuate the territory, the Guarani people refused
+      the idea of leaving the mission settlements and decided to stay at their land.
   - _image: {fileID: 21300000, guid: 4624df3c935579c41b0808e87b205311, type: 3}
-    _text: 'Most of the Jesuits evacuated the missions, however, the Guarani leaders
-      formed resistance groups and thus began what is known today as the Guaranitic
-      War... '
+    _text: Most of the Jesuits and Guarani evacuated the missions and headed to the
+      other side of the river. However, though a pacific people, some Guarani leaders
+      formed resistance groups to defend their land and their right to stay there.
+  - _image: {fileID: 21300000, guid: 4624df3c935579c41b0808e87b205311, type: 3}
+    _text: "This resistance later turned into what is known today as the Guaranitic
+      War\u2026"

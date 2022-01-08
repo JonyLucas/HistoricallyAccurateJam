@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526ad905d941276498acaab701979898, type: 3}
+  m_Name: Player Death Sounds
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: 07e547ed27d49f94ba8625b3f2d5b0d2, type: 3}
+  - {fileID: 8300000, guid: fdbd998e5ac7c0c4695bef17e2b25c3d, type: 3}
+  - {fileID: 8300000, guid: 44b660f7d37b4e342bdd88029babf104, type: 3}

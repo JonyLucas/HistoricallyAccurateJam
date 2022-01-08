@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Game.Audio
 {
     [CreateAssetMenu(fileName = "Audio Clips", menuName = "Audio Clips", order = 53)]
-    public class PlayerSoundFx : ScriptableObject
+    public class SoundFx : ScriptableObject
     {
         [SerializeField]
         private List<AudioClip> _audioClips;

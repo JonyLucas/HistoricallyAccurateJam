@@ -104,6 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _jumpForce: 220
+  _jumpSfx: {fileID: 11400000, guid: abef093997562a7419438a3ade1b48fa, type: 2}
+  _landingSfx: {fileID: 11400000, guid: 3a4c300155013fb4bac5d7292b3fc900, type: 2}
 --- !u!50 &4527445841175158653
 Rigidbody2D:
   serializedVersion: 4
@@ -182,10 +184,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b118b25df4fb8040a50150bfe34d91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxArrowCount: 4
+  _maxArrowCount: 5
   _fireRate: 1
   _arrowPrefab: {fileID: 2594710220706420174, guid: 90ca662e602dc6146af69912fdd71fc4, type: 3}
   _soundFx: {fileID: 11400000, guid: 4775d940380947540a9dd5edb86f2ace, type: 2}
+  _arrowShootEvent: {fileID: 11400000, guid: fe786783101d333418a6e1b2f89e77d0, type: 2}
 --- !u!114 &4527445841175158630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0134b98b2044a424082759e4810619e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lives: 2
+  _sfx: {fileID: 11400000, guid: 8a6ba7b060dd64a47b2ed7abd31061b6, type: 2}
+  _lives: 4
   _maxLives: 4
   _event: {fileID: 11400000, guid: 95e80de862eca3a4e980ee0f282e4782, type: 2}
   _playerDeathEvent: {fileID: 11400000, guid: ad077016b2b74ee41ae5ed8c7a5e5261, type: 2}

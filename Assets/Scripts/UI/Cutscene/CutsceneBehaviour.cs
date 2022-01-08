@@ -67,6 +67,7 @@ namespace Game.UI.Cutscene
                         _nextButton.SetActive(false);
                     }
                 }
+                _previousButton.SetActive(true);
             }
             UpdateFrame();
         }

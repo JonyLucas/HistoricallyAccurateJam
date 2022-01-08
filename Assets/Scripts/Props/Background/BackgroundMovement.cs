@@ -24,12 +24,12 @@ namespace Game.Enviroment
             }
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (_movementScript != null && _movementScript.IsMoving)
             {
                 _moveDirection = !_movementScript.IsFacingRight ? Vector2.right : Vector2.left;
-                transform.Translate(_moveDirection * _speed * Time.fixedDeltaTime);
+                transform.Translate(_moveDirection * _speed * Time.deltaTime);
             }
         }
 

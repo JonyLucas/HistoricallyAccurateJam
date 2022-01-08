@@ -1,3 +1,4 @@
+using Game.Audio;
 using Game.Props;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +21,10 @@ namespace Game.Enemy
         [SerializeField]
         private int _maxShotsCount = 3;
 
+        [SerializeField]
+        private SoundFx _soundFx;
+
+        private AudioSource _audioSource;
         private List<GameObject> _enemyShots;
         private GameObject _player;
         private SpriteRenderer _renderer;
@@ -34,6 +39,7 @@ namespace Game.Enemy
         {
             _player = GameObject.FindGameObjectWithTag("Player");
             _renderer = GetComponent<SpriteRenderer>();
+            _audioSource = GetComponent<AudioSource>();
             InitializeShots();
             StartCoroutine(ShootCoroutine());
         }
@@ -96,6 +102,11 @@ namespace Game.Enemy
                     var shot = _enemyShots.FirstOrDefault(x => !x.activeInHierarchy);
                     if (shot != null)
                     {
+                        if (_audioSource != null)
+                        {
+                            _audioSource.clip = _soundFx.GetRandomSound();
+                            _audioSource.Play();
+                        }
                         shot.GetComponent<GunshotMovement>().MoveDirection = !_isFacingLeft ? Vector2.right : Vector2.left;
                         shot.transform.position = transform.position;
                         shot.SetActive(true);

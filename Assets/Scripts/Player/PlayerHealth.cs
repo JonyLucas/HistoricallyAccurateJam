@@ -1,3 +1,4 @@
+using Game.Audio;
 using Game.Enums;
 using Game.ScriptableObjects.Events;
 using System.Collections;
@@ -8,6 +9,9 @@ namespace Game.Player
 {
     public class PlayerHealth : MonoBehaviour
     {
+        [SerializeField]
+        private SoundFx _sfx;
+
         [SerializeField]
         private int _lives = 4;
 
@@ -22,8 +26,11 @@ namespace Game.Player
 
         private Animator _animator;
 
+        private AudioSource _audioSource;
+
         private void Awake()
         {
+            _audioSource = GetComponent<AudioSource>();
             _lives = _maxLives;
             _animator = GetComponent<Animator>();
         }
@@ -39,6 +46,8 @@ namespace Game.Player
                     _lives = 0;
                 }
 
+                _audioSource.clip = _sfx.GetRandomSound();
+                _audioSource.Play();
                 _animator.SetTrigger("death");
                 _playerDeathEvent.OnOcurred();
             }
@@ -61,6 +70,15 @@ namespace Game.Player
             }
 
             _event.OnOcurred(_lives);
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Spike"))
+            {
+                _lives = 0;
+                Damage();
+            }
         }
     }
 }
