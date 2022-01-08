@@ -7,39 +7,20 @@ using UnityEngine;
 
 namespace Game.Enemy
 {
-    public class PortugueseEnemyAttack : MonoBehaviour
+    public class PortugueseEnemyAttack : BaseEnemyAttack
     {
         [SerializeField]
         private GameObject _shotPrefab;
 
         [SerializeField]
-        private float _minYDistance = 0.5f;
-
-        [SerializeField]
-        private float _fireRate = 0.5f;
-
-        [SerializeField]
         private int _maxShotsCount = 3;
 
-        [SerializeField]
-        private SoundFx _soundFx;
-
-        private AudioSource _audioSource;
         private List<GameObject> _enemyShots;
-        private GameObject _player;
-        private SpriteRenderer _renderer;
-        private Vector3 _distance;
 
-        private bool _isFacingLeft = true;
         private bool _canShoot = false;
-        private bool _playerAlive = true;
-        private bool _isVisible = false;
 
         private void Start()
         {
-            _player = GameObject.FindGameObjectWithTag("Player");
-            _renderer = GetComponent<SpriteRenderer>();
-            _audioSource = GetComponent<AudioSource>();
             InitializeShots();
             StartCoroutine(ShootCoroutine());
         }
@@ -59,14 +40,14 @@ namespace Game.Enemy
             }
         }
 
-        private void FixedUpdate()
+        protected override void PerformAction()
         {
-            if (_isVisible)
+            if (isVisible)
             {
-                _distance = transform.position - _player.transform.position;
-                var yDistance = Mathf.Floor(_distance.y);
+                distance = transform.position - player.transform.position;
+                var yDistance = Mathf.Floor(distance.y);
 
-                if (Mathf.Abs(yDistance) < _minYDistance)
+                if (Mathf.Abs(yDistance) < minYDistance)
                 {
                     FacePlayer();
                     _canShoot = true;
@@ -78,56 +59,27 @@ namespace Game.Enemy
             }
         }
 
-        private void FacePlayer()
-        {
-            if (_distance.x > 0)
-            {
-                _isFacingLeft = true;
-            }
-            else
-            {
-                _isFacingLeft = false;
-            }
-
-            _renderer.flipX = _isFacingLeft;
-        }
-
         private IEnumerator ShootCoroutine()
         {
-            while (_playerAlive)
+            while (playerAlive)
             {
-                yield return new WaitForSeconds(_fireRate);
-                if (_canShoot && _isVisible)
+                yield return new WaitForSeconds(attackRate);
+                if (_canShoot && isVisible)
                 {
                     var shot = _enemyShots.FirstOrDefault(x => !x.activeInHierarchy);
                     if (shot != null)
                     {
-                        if (_audioSource != null)
+                        if (audioSource != null)
                         {
-                            _audioSource.clip = _soundFx.GetRandomSound();
-                            _audioSource.Play();
+                            audioSource.clip = soundFx.GetRandomSound();
+                            audioSource.Play();
                         }
-                        shot.GetComponent<GunshotMovement>().MoveDirection = !_isFacingLeft ? Vector2.right : Vector2.left;
+                        shot.GetComponent<GunshotMovement>().MoveDirection = !isFacingLeft ? Vector2.right : Vector2.left;
                         shot.transform.position = transform.position;
                         shot.SetActive(true);
                     }
                 }
             }
-        }
-
-        private void OnBecameInvisible()
-        {
-            _isVisible = false;
-        }
-
-        private void OnBecameVisible()
-        {
-            _isVisible = true;
-        }
-
-        public void PlayerDeath()
-        {
-            _playerAlive = false;
         }
     }
 }

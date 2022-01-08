@@ -32,3 +32,4 @@ MonoBehaviour:
       We are tired...
   - _charIcon: {fileID: 4853428335236853494, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
     _textDialog: If I need to die to protect my people, I'll keep fighting!
+  _isFinalDialog: 1

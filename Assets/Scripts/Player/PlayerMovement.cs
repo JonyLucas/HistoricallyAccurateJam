@@ -1,6 +1,7 @@
 using Game.Audio;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Game.Player
@@ -30,6 +31,7 @@ namespace Game.Player
         private bool _isCrouching = false;
 
         private float _moveDirection;
+        private float _crouchAnimationDuration;
 
         public bool IsFacingRight
         { get { return _isFacingRight; } }
@@ -46,6 +48,10 @@ namespace Game.Player
             _rigidbody = GetComponent<Rigidbody2D>();
             _renderer = GetComponent<SpriteRenderer>();
             _animator = GetComponent<Animator>();
+
+            _crouchAnimationDuration = _animator.runtimeAnimatorController
+                .animationClips
+                .FirstOrDefault(x => x.name == "player_squat").length;
         }
 
         private void Update()
@@ -110,8 +116,8 @@ namespace Game.Player
         private void Crouching()
         {
             StopMovement();
-            _isCrouching = true;
             _animator.SetBool("isCrouching", _isCrouching);
+            _isCrouching = true;
             _rigidbody.simulated = false;
         }
 

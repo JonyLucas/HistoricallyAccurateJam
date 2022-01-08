@@ -10,6 +10,13 @@ namespace Game.UI.Dialog
         [SerializeField]
         private List<Dialog> _dialogs;
 
-        public List<Dialog> Dialogs { get { return _dialogs; } }
+        [SerializeField]
+        private bool _isFinalDialog;
+
+        public List<Dialog> Dialogs
+        { get { return _dialogs; } }
+
+        public bool IsFinalDialog 
+        { get { return _isFinalDialog; } }
     }
 }

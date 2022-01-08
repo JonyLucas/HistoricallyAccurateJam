@@ -25,19 +25,23 @@ namespace Game.Player
         private GameEvent _playerDeathEvent;
 
         private Animator _animator;
-
         private AudioSource _audioSource;
+        private SpriteRenderer _renderer;
+        private float _hitFeedbackDuration = 0.3f;
 
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
             _lives = _maxLives;
             _animator = GetComponent<Animator>();
+            _renderer = GetComponent<SpriteRenderer>();
         }
 
         public void Damage()
         {
             _lives--;
+
+            StartCoroutine(HitFeedback());
 
             if (_lives <= 0)
             {
@@ -45,7 +49,6 @@ namespace Game.Player
                 {
                     _lives = 0;
                 }
-
                 _audioSource.clip = _sfx.GetRandomSound();
                 _audioSource.Play();
                 _animator.SetTrigger("death");
@@ -53,6 +56,13 @@ namespace Game.Player
             }
 
             _event.OnOcurred(_lives);
+        }
+
+        private IEnumerator HitFeedback()
+        {
+            _renderer.color = new Color(150, 0, 0);
+            yield return new WaitForSeconds(_hitFeedbackDuration);
+            _renderer.color = Color.white;
         }
 
         public void Heal(CollectablesType collectablesType)

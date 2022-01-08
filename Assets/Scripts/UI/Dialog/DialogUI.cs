@@ -14,10 +14,7 @@ namespace Game.UI.Dialog
         private Image _icon;
 
         [SerializeField]
-        private bool _isFinalDialog = false;
-
-        [SerializeField]
-        private GameEvent _finishedLevel;
+        private GameEvent _completeStageEvent;
 
         private ScriptableDialog _dialog;
         private Dialog _currentDialog;
@@ -51,9 +48,9 @@ namespace Game.UI.Dialog
             }
             else
             {
-                if (_isFinalDialog)
+                if (_dialog != null && _dialog.IsFinalDialog)
                 {
-                    _finishedLevel.OnOcurred();
+                    _completeStageEvent.OnOcurred();
                 }
                 else
                 {

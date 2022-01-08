@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deathSfx: {fileID: 11400000, guid: 2c9bb2dc77ada9d41893d89ac6e4fe92, type: 2}
-  _hitSfx: {fileID: 11400000, guid: 04db2e17b82aef745a93ffc79059b5dd, type: 2}
+  _maxLives: 1
 --- !u!114 &1300194047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,11 +171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c310796de347340a1de42cf8f3574f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minYDistance: 0.8
+  attackRate: 1.5
+  soundFx: {fileID: 11400000, guid: a32783ec5b5f00546bc6149c3f5541c8, type: 2}
   _shotPrefab: {fileID: 2384668839203416556, guid: 74447c0c0e1018a44b0ce0365f9cdf9f, type: 3}
-  _minYDistance: 0.1
-  _fireRate: 2
   _maxShotsCount: 3
-  _soundFx: {fileID: 11400000, guid: a32783ec5b5f00546bc6149c3f5541c8, type: 2}
 --- !u!114 &3676225979814524874
 MonoBehaviour:
   m_ObjectHideFlags: 0

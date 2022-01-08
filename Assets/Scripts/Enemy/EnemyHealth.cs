@@ -35,5 +35,14 @@ namespace Game.Enemy
                 Destroy(gameObject);
             }
         }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Spike"))
+            {
+                _lives = 0;
+                Damage();
+            }
+        }
     }
 }

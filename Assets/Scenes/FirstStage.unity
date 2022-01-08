@@ -49126,6 +49126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7973194568375719657, guid: cd4d7ddabe68b8d4690fa01e83577d8d, type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7973194568538600444, guid: cd4d7ddabe68b8d4690fa01e83577d8d, type: 3}
       propertyPath: m_Color.b
       value: 0.38679248
@@ -49138,5 +49142,9 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.38679248
       objectReference: {fileID: 0}
+    - target: {fileID: 7973194568739541882, guid: cd4d7ddabe68b8d4690fa01e83577d8d, type: 3}
+      propertyPath: _completeStageEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 5641a0b8d90b57e4abefe18c8b0c1ebd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd4d7ddabe68b8d4690fa01e83577d8d, type: 3}

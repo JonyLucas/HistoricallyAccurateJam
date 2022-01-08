@@ -19,8 +19,8 @@ namespace Game.Props
 
         private float _speed;
         private float _gravity = 1;
-
         private bool _afterShot = true;
+        private bool _hitGround = false;
 
         private Rigidbody2D _rigidbody;
         private BoxCollider2D _collider;
@@ -45,6 +45,8 @@ namespace Game.Props
             _speed = _originalSpeed;
             _gravity = _originalGravity;
             _afterShot = true;
+            _hitGround = false;
+            _trigger.enabled = true;
             _renderer.flipX = MoveDirection == Vector2.left;
 
             _rigidbody.bodyType = RigidbodyType2D.Kinematic;
@@ -60,12 +62,13 @@ namespace Game.Props
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.transform.CompareTag("Enemy"))
+            if (collision.transform.CompareTag("Enemy") && !_hitGround)
             {
                 AudioSource.PlayClipAtPoint(_hitSfx.GetRandomSound(), _mainCamera.transform.position);
                 _speed = 0;
                 _gravity = 0;
 
+                _trigger.enabled = false;
                 _rigidbody.bodyType = RigidbodyType2D.Dynamic;
                 _collider.enabled = true;
 
@@ -95,6 +98,8 @@ namespace Game.Props
         {
             if (collision.transform.CompareTag("Ground"))
             {
+                _trigger.enabled = true;
+                _hitGround = true;
                 _rigidbody.bodyType = RigidbodyType2D.Kinematic;
                 _collider.enabled = false;
             }

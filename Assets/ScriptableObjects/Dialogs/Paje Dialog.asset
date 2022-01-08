@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8b983280c1f2d42955b47f82add1aa, type: 3}
+  m_Name: Paje Dialog
+  m_EditorClassIdentifier: 
+  _dialogs:
+  - _charIcon: {fileID: -3034983707036092502, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: Our land is taken over by settlers! They are decimating us! We need
+      to resist!
+  - _charIcon: {fileID: 4614766326216121995, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: Our land belongs to Nhanderu, he who created all this, plants, animals,
+      and all life. We Guarani do not like war, we do not like to fight, we are a
+      peaceful people.
+  - _charIcon: {fileID: 4614766326216121995, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: We fled from confrontation and war, so we pay tribute to the king
+      of Spain.
+  - _charIcon: {fileID: -3034983707036092502, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: 'Some work, building houses, temples, on farms, and others are hidden
+      in the bush. That''s how we survive: with dialogue, and trying to protect our
+      people and our land. '
+  - _charIcon: {fileID: -3034983707036092502, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: A lot of people are already going to the other side of the river,
+      but we chose to stay here.
+  - _charIcon: {fileID: 4614766326216121995, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: But if we don't do anything, we'll die!
+  - _charIcon: {fileID: -3034983707036092502, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: If it's for all of us to die here, and it's God's will, we'll stay
+      here.
+  - _charIcon: {fileID: 4614766326216121995, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+    _textDialog: ...

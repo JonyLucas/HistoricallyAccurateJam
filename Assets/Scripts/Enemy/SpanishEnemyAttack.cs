@@ -3,54 +3,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpanishEnemyAttack : MonoBehaviour
+namespace Game.Enemy
 {
-    [SerializeField]
-    private float _speed;
-
-    // Start is called before the first frame update
-    private void Start()
+    public class SpanishEnemyAttack : BaseEnemyAttack
     {
-    }
+        [SerializeField]
+        private float _speed;
 
-    //private void FixedUpdate()
-    //{
-    //    if (_isVisible)
-    //    {
-    //        _distance = transform.position - _player.transform.position;
-    //        var yDistance = Mathf.Floor(_distance.y);
+        private Vector2 _moveDirection;
 
-    //        if (Mathf.Abs(yDistance) < _minYDistance)
-    //        {
-    //            FacePlayer();
-    //            _canShoot = true;
-    //        }
-    //        else
-    //        {
-    //            _canShoot = false;
-    //        }
-    //    }
-    //}
+        private PlayerMovement _playerMoveScript;
 
-    //private void FacePlayer()
-    //{
-    //    if (_distance.x > 0)
-    //    {
-    //        _isFacingLeft = true;
-    //    }
-    //    else
-    //    {
-    //        _isFacingLeft = false;
-    //    }
-
-    //    _renderer.flipX = _isFacingLeft;
-    //}
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        private void Start()
         {
-            collision.gameObject.GetComponent<PlayerHealth>().Damage();
+            _playerMoveScript = player.GetComponent<PlayerMovement>();
+        }
+
+        protected override void PerformAction()
+        {
+            distance = transform.position - player.transform.position;
+            var yDistance = Mathf.Floor(distance.y);
+
+            if (Mathf.Abs(yDistance) < minYDistance && !_playerMoveScript.IsCrouching)
+            {
+                FacePlayer();
+                PorsuitPlayer();
+            }
+            else
+            {
+                animator.SetBool("isAttacking", false);
+            }
+        }
+
+        private void PorsuitPlayer()
+        {
+            _moveDirection = isFacingLeft ? Vector2.left : Vector2.right;
+            transform.Translate(_moveDirection * _speed * Time.fixedDeltaTime);
+            animator.SetBool("isAttacking", true);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                audioSource.clip = soundFx.GetRandomSound();
+                audioSource.Play();
+                collision.gameObject.GetComponent<PlayerHealth>().Damage();
+            }
         }
     }
 }
