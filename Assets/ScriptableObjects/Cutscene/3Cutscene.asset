@@ -16,26 +16,4 @@ MonoBehaviour:
   - _image: {fileID: 21300000, guid: 514a8aa4b7d66574fab61970604b2c38, type: 3}
     _text: In 1756, near Sao Gabriel, more than 3,000 Spanish and Portuguese soldiers,
       armed with shotguns, canons, and other weapons attacked the Guarani in what
-      is called the Battle of Caiboate.
-  - _image: {fileID: 21300000, guid: df58d9328dd861f4ba40eaee947d003f, type: 3}
-    _text: In less than two hours, more than 1,500 Guarani people were killed by
-      the army, even after surrendering themselves, and hundreds of others were arrested,
-      tortured, and killed later. The Europeans suffered 4 deaths.
-  - _image: {fileID: 21300000, guid: 2c77fd52d865a574e983192c084f1b5a, type: 3}
-    _text: 'The Guarani War is still considered the most brutal slaughter in Brazil,
-      and it is a  hallmark of the bloody conquest of South America by Europeans. '
-  - _image: {fileID: 21300000, guid: 446217968ed2f6b448fd8f07bb7d76f6, type: 3}
-    _text: Indigenous peoples are dying as Brazilian politicians deliberately allow
-      farmers and soy planters to steal and destroy indigenous territories. The key
-      to the survival and prosperity of indigenous peoples is ensuring that their
-      land remains under their control.
-  - _image: {fileID: 21300000, guid: dc347f0a5964f6943a523b7b576d2937, type: 3}
-    _text: Despite the massacre suffered during the Guarani War, the Guarani villages
-      and other tribes in Brazil are still under threat, but in the face of all the
-      oppression they still suffer, they remain strong and united, fighting for the
-      land that has always been theirs.
-  - _image: {fileID: 21300000, guid: 07d23ffc69744e0418147dc5b8460209, type: 3}
-    _text: "\"What counts for us is our land. This is worth more than life. And we
-      are the ones who can sustain nature, who never destroy or pollute our rivers.
-      We take care of our land, we know its value. We need to protect what our ancestors
-      left us.\" - Manifest of Piara\xE7u, 2020 "
+      is called the Battle of Caiboate...

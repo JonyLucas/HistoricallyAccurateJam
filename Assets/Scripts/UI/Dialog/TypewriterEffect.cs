@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Text;
+using Game.Audio;
 
 public class TypewriterEffect : MonoBehaviour
 {
     [SerializeField]
     private float _typeSpeed = 50f;
+
+    [SerializeField]
+    private SoundFx _soundFx;
+
+    private AudioSource _audioSource;
 
     private bool _isTyping = false;
 
@@ -16,6 +22,8 @@ public class TypewriterEffect : MonoBehaviour
 
     public void Run(string textToType, TMP_Text textLabel)
     {
+        _audioSource = GetComponent<AudioSource>();
+
         if (!_isTyping)
         {
             textLabel.text = "";
@@ -43,6 +51,12 @@ public class TypewriterEffect : MonoBehaviour
             strBuilder.Append(textToType[charIndex]);
             charIndex++;
             textLabel.text = strBuilder.ToString();
+
+            if (_audioSource != null && _soundFx != null)
+            {
+                _audioSource.clip = _soundFx.GetRandomSound();
+                _audioSource.Play();
+            }
 
             yield return new WaitForSeconds(_typeSpeed);
         }

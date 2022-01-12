@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogs:
   - _charIcon: {fileID: -3034983707036092502, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
-    _textDialog: Prepare for battle!
+    _textDialog: This land is ours! Let's fight for it and defend our people!
   _isFinalDialog: 1

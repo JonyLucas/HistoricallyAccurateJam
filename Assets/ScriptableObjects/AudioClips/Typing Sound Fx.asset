@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526ad905d941276498acaab701979898, type: 3}
+  m_Name: Typing Sound Fx
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: 87d4411f4abb98846bd696e427b1379e, type: 3}
+  - {fileID: 8300000, guid: cdc2a2089f893d74e9cbd77ba23c84ba, type: 3}
+  - {fileID: 8300000, guid: f044e77b2328bf04e885dbf7835d9777, type: 3}
+  - {fileID: 8300000, guid: 7727755d2e060ad4e89cac6ef48acbd3, type: 3}
+  - {fileID: 8300000, guid: 903535e1d5aba6f41addb2be5c5711a8, type: 3}
+  - {fileID: 8300000, guid: 4097ea800c636954f8de24b315007105, type: 3}

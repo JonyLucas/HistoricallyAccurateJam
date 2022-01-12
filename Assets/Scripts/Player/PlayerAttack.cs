@@ -66,7 +66,7 @@ namespace Game.Player
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F) && _canShoot && !_playerMovement.IsCrouching)
+            if (Input.GetKeyDown(KeyCode.Space) && _canShoot && !_playerMovement.IsCrouching)
             {
                 StartCoroutine(FireRateCoroutine());
                 ShootArrows();
@@ -94,7 +94,9 @@ namespace Game.Player
         {
             yield return new WaitForSeconds(_animationDuration);
 
-            arrow.transform.position = transform.position;
+            var arrowPosition = transform.position;
+            arrowPosition.y += 0.2f;
+            arrow.transform.position = arrowPosition;
             arrow.GetComponent<ArrowMovement>().MoveDirection = _playerMovement.IsFacingRight ? Vector2.right : Vector2.left;
             arrow.SetActive(true);
 

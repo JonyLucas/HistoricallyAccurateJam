@@ -56,7 +56,8 @@ namespace Game.Player
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && _canJump)
+            bool upMovement = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
+            if (upMovement && _canJump)
             {
                 _audioSource.clip = _jumpSfx.GetRandomSound();
                 _audioSource.Play();
