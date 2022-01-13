@@ -51563,7 +51563,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4527445841175158653, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
       propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527445841175158653, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
+      propertyPath: m_Simulated
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527445841175158653, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4527445841175158654, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
       propertyPath: m_Name

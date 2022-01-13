@@ -21,7 +21,7 @@ namespace Game.Commands.Movement
 
         protected override bool ExecutionCodition(GameObject gameObject)
         {
-            return !moveScript.IsCrouching && !moveScript.IsJumping;
+            return !moveScript.IsCrouching;
         }
     }
 }

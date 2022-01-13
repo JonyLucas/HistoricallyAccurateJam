@@ -1,6 +1,7 @@
 using Game.Audio;
 using Game.Commands.Movement;
 using Game.Player.ScriptableObjects;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -11,8 +12,8 @@ namespace Game.Player
         [SerializeField]
         private PlayerControl _control;
 
-        [SerializeField]
-        private float _jumpForce = 350;
+        private float _jumpForce = 10;
+        private float _gravity = 0.2f;
 
         [SerializeField]
         private SoundFx _jumpSfx;
@@ -59,7 +60,6 @@ namespace Game.Player
                 if (command != null)
                 {
                     HorizontalMovement(command);
-                    JumpMovement(command);
                     CrouchMovement(command);
                 }
             }
@@ -82,8 +82,19 @@ namespace Game.Player
                 _audioSource.clip = _jumpSfx.GetRandomSound();
                 _audioSource.Play();
                 _canJump = false;
+                JumpMovement(null);
                 _animator.SetBool("isJumping", true);
-                _rigidbody.AddForce(Vector2.up * _jumpForce);
+                //_rigidbody.AddForce(Vector2.up * _jumpForce);
+            }
+        }
+
+        // Check later
+        private void OnGUI()
+        {
+            Event e = Event.current;
+            if (e.isKey)
+            {
+                Debug.Log("Detected Key: " + e.keyCode);
             }
         }
 
@@ -109,6 +120,20 @@ namespace Game.Player
 
         private void JumpMovement(BaseMoveCommand command)
         {
+            Debug.Log("JUMP");
+            StartCoroutine(JumpCoroutine());
+        }
+
+        private IEnumerator JumpCoroutine()
+        {
+            var currentSpeed = _jumpForce;
+            transform.Translate(Vector2.up * currentSpeed * Time.deltaTime);
+            while (IsJumping)
+            {
+                yield return null;
+                transform.Translate(Vector2.up * currentSpeed * Time.deltaTime);
+                currentSpeed -= _gravity;
+            }
         }
 
         private void CrouchMovement(BaseMoveCommand command)
@@ -142,6 +167,7 @@ namespace Game.Player
                     _audioSource.clip = _landingSfx.GetRandomSound();
                     _audioSource.Play();
                 }
+                Debug.Log("END OF JUMP");
                 _canJump = true;
                 _animator.SetBool("isJumping", IsJumping);
             }
