@@ -1,6 +1,6 @@
 using Game.Audio;
-using System.Collections;
-using System.Collections.Generic;
+using Game.Commands.Movement;
+using Game.Player.ScriptableObjects;
 using System.Linq;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ namespace Game.Player
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField]
-        private float _speed = 1;
+        private PlayerControl _control;
 
         [SerializeField]
         private float _jumpForce = 350;
@@ -30,8 +30,8 @@ namespace Game.Player
         private bool _isMoving = false;
         private bool _isCrouching = false;
 
-        private float _moveDirection;
-        private float _crouchAnimationDuration;
+        public bool IsJumping
+        { get { return !_canJump; } }
 
         public bool IsFacingRight
         { get { return _isFacingRight; } }
@@ -48,14 +48,30 @@ namespace Game.Player
             _rigidbody = GetComponent<Rigidbody2D>();
             _renderer = GetComponent<SpriteRenderer>();
             _animator = GetComponent<Animator>();
-
-            _crouchAnimationDuration = _animator.runtimeAnimatorController
-                .animationClips
-                .FirstOrDefault(x => x.name == "player_squat").length;
+            _control.InitializeCommands(gameObject);
         }
 
         private void Update()
         {
+            if (Input.anyKey)
+            {
+                var command = _control.MoveCommands
+                    .FirstOrDefault(command => Input.GetKey(command.AssociatedKey));
+
+                if (command != null)
+                {
+                    HorizontalMovement(command);
+                    JumpMovement(command);
+                }
+            }
+            else
+            {
+                if (IsMoving)
+                {
+                    StopMovement();
+                }
+            }
+
             bool upMovement = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
             if (upMovement && _canJump)
             {
@@ -67,21 +83,34 @@ namespace Game.Player
             }
         }
 
-        private void FixedUpdate()
+        private void HorizontalMovement(BaseMoveCommand command)
         {
-            // Movements
-            _moveDirection = Input.GetAxisRaw("Horizontal");
-            if (_moveDirection != 0 && !_isCrouching)
+            if (command.GetType() == typeof(MoveRightCommand))
             {
-                Movement();
+                command.Execute(gameObject);
+                _isFacingRight = true;
+                _isMoving = true;
+            }
+            else if (command.GetType() == typeof(MoveLeftCommand))
+            {
+                command.Execute(gameObject);
+                _isFacingRight = false;
+                _isMoving = true;
             }
             else
             {
                 StopMovement();
             }
+        }
 
-            _moveDirection = Input.GetAxisRaw("Vertical");
-            if (_moveDirection < 0 && !_isMoving && _canJump)
+        private void JumpMovement(BaseMoveCommand command)
+        {
+        }
+
+        private void FixedUpdate()
+        {
+            var moveDirection = Input.GetAxisRaw("Vertical");
+            if (moveDirection < 0 && !_isMoving && _canJump)
             {
                 Crouching();
             }
@@ -97,21 +126,7 @@ namespace Game.Player
         {
             _isMoving = false;
             _animator.SetBool("isWalking", _isMoving);
-            _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
-        }
-
-        private void Movement()
-        {
-            _isMoving = true;
-            _rigidbody.velocity = new Vector2(_moveDirection * _speed, _rigidbody.velocity.y);
-            _animator.SetBool("isWalking", _isMoving);
-
-            // Animations
-            if (_moveDirection > 0 && !_isFacingRight || _moveDirection < 0 && _isFacingRight)
-            {
-                _renderer.flipX = _isFacingRight;
-                _isFacingRight = !_isFacingRight;
-            }
+            //_rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
         }
 
         private void Crouching()

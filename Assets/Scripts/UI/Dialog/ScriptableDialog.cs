@@ -16,7 +16,7 @@ namespace Game.UI.Dialog
         public List<Dialog> Dialogs
         { get { return _dialogs; } }
 
-        public bool IsFinalDialog 
+        public bool IsFinalDialog
         { get { return _isFinalDialog; } }
     }
 }

@@ -2,7 +2,6 @@ using Game.Audio;
 using Game.Enums;
 using Game.ScriptableObjects.Events;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Player
@@ -27,7 +26,7 @@ namespace Game.Player
         private Animator _animator;
         private AudioSource _audioSource;
         private SpriteRenderer _renderer;
-        private float _hitFeedbackDuration = 0.3f;
+        private readonly float _hitFeedbackDuration = 0.3f;
 
         private void Awake()
         {
