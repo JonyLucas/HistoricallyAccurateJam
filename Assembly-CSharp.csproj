@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\Enums\MoveCommandType.cs" />
     <Compile Include="Assets\Scripts\Factories\MoveCommandFactory.cs" />
+    <Compile Include="Assets\Scripts\Extensions\AnimatorExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

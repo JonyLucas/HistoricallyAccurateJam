@@ -21,7 +21,6 @@ namespace Game.Player
         private SoundFx _landingSfx;
 
         private Rigidbody2D _rigidbody;
-        private SpriteRenderer _renderer;
         private Animator _animator;
         private AudioSource _audioSource;
 
@@ -46,7 +45,6 @@ namespace Game.Player
         {
             _audioSource = GetComponent<AudioSource>();
             _rigidbody = GetComponent<Rigidbody2D>();
-            _renderer = GetComponent<SpriteRenderer>();
             _animator = GetComponent<Animator>();
             _control.InitializeCommands(gameObject);
         }
@@ -62,6 +60,7 @@ namespace Game.Player
                 {
                     HorizontalMovement(command);
                     JumpMovement(command);
+                    CrouchMovement(command);
                 }
             }
             else
@@ -69,6 +68,11 @@ namespace Game.Player
                 if (IsMoving)
                 {
                     StopMovement();
+                }
+
+                if (IsCrouching)
+                {
+                    StopCrouching();
                 }
             }
 
@@ -107,18 +111,12 @@ namespace Game.Player
         {
         }
 
-        private void FixedUpdate()
+        private void CrouchMovement(BaseMoveCommand command)
         {
-            var moveDirection = Input.GetAxisRaw("Vertical");
-            if (moveDirection < 0 && !_isMoving && _canJump)
+            if (command.GetType() == typeof(CrouchCommand))
             {
-                Crouching();
-            }
-            else
-            {
-                _isCrouching = false;
-                _animator.SetBool("isCrouching", _isCrouching);
-                _rigidbody.simulated = true;
+                command.Execute(gameObject);
+                _isCrouching = true;
             }
         }
 
@@ -126,28 +124,26 @@ namespace Game.Player
         {
             _isMoving = false;
             _animator.SetBool("isWalking", _isMoving);
-            //_rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
         }
 
-        private void Crouching()
+        private void StopCrouching()
         {
-            StopMovement();
+            _isCrouching = false;
             _animator.SetBool("isCrouching", _isCrouching);
-            _isCrouching = true;
-            _rigidbody.simulated = false;
+            _rigidbody.simulated = true;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.transform.CompareTag("Ground"))
             {
-                if (!_canJump)
+                if (IsJumping)
                 {
                     _audioSource.clip = _landingSfx.GetRandomSound();
                     _audioSource.Play();
                 }
                 _canJump = true;
-                _animator.SetBool("isJumping", false);
+                _animator.SetBool("isJumping", IsJumping);
             }
         }
 

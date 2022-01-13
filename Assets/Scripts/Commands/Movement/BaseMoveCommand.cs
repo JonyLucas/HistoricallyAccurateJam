@@ -14,7 +14,6 @@ namespace Game.Commands.Movement
         protected PlayerMovement moveScript;
 
         public abstract string AnimationParameter { get; }
-        protected float animationDuration;
         protected bool isInitialized = false;
 
         protected BaseMoveCommand(KeyCode associatedKey, float speedValue) : base(associatedKey)
@@ -35,21 +34,15 @@ namespace Game.Commands.Movement
             }
         }
 
-        protected abstract void ExecuteAction(GameObject gameObject);
-
         public virtual void InitializeFields(GameObject gameObject)
         {
             renderer = gameObject.GetComponent<SpriteRenderer>();
             animator = gameObject.GetComponent<Animator>();
             moveScript = gameObject.GetComponent<PlayerMovement>();
-
-            if (animator != null)
-            {
-                var animation = animator.runtimeAnimatorController
-                .animationClips.FirstOrDefault(x => x.name == AnimationParameter);
-
-                animationDuration = animation != null ? animation.length : 0;
-            }
         }
+
+        protected abstract void ExecuteAction(GameObject gameObject);
+
+        //public abstract void FinishExecution()
     }
 }
