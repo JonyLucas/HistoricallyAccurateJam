@@ -18,16 +18,11 @@ namespace Game.Commands.Movement
         {
         }
 
-        protected override async void ExecuteAction(GameObject gameObject)
+        protected override void ExecuteAction(GameObject gameObject)
         {
             moveScript.IsCrouching = true;
             animator.SetBool(AnimationParameter, true);
-            await Task.Delay((int)(_animationDuration / 2 * 1000));
-
-            if (gameObject != null)
-            {
-                rigidbody.simulated = false;
-            }
+            rigidbody.simulated = false;
         }
 
         protected override bool ExecutionCodition(GameObject gameObject)
@@ -43,9 +38,9 @@ namespace Game.Commands.Movement
 
         public override void FinalizeAction(GameObject gameObject)
         {
+            rigidbody.simulated = true;
             moveScript.IsCrouching = false;
             animator.SetBool(AnimationParameter, moveScript.IsCrouching);
-            rigidbody.simulated = true;
         }
     }
 }

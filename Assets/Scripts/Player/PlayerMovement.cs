@@ -15,7 +15,6 @@ namespace Game.Player
         [SerializeField]
         private SoundFx _landingSfx;
 
-        private Animator _animator;
         private AudioSource _audioSource;
 
         public bool IsJumping { get; set; }
@@ -27,7 +26,6 @@ namespace Game.Player
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
-            _animator = GetComponent<Animator>();
         }
 
         protected override void InitializeCommands()
@@ -50,6 +48,10 @@ namespace Game.Player
             {
                 IsJumping = false;
                 StopCommandType<JumpCommand>();
+            }
+            if (IsCrouching)
+            {
+                StopCommandType<CrouchCommand>();
             }
         }
 
