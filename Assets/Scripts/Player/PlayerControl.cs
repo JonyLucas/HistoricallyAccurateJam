@@ -21,10 +21,5 @@ namespace Game.Player.ScriptableObjects
             _moveCommands = new List<BaseMoveCommand>();
             _commands.ForEach(command => _moveCommands.Add(command.Create()));
         }
-
-        public void InitializeCommands(GameObject gameObject)
-        {
-            _moveCommands.ForEach(command => command.InitializeFields(gameObject));
-        }
     }
 }

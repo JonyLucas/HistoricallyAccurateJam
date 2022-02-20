@@ -51517,6 +51517,10 @@ PrefabInstance:
       propertyPath: _control
       value: 
       objectReference: {fileID: 11400000, guid: 63773a3a4c78f3849b3f096f07c9304b, type: 2}
+    - target: {fileID: 4527445841175158651, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4527445841175158652, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -51563,10 +51567,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4527445841175158653, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
       propertyPath: m_BodyType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4527445841175158653, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
       propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527445841175158653, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
+      propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4527445841175158653, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
@@ -51579,6 +51587,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
+--- !u!1 &1798768274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4527445841175158654, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
+  m_PrefabInstance: {fileID: 1798768273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1798768275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798768274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e460c7e1749c474c88c8559da3b9313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _control: {fileID: 11400000, guid: 63773a3a4c78f3849b3f096f07c9304b, type: 2}
+  _xLimit: 50
 --- !u!1 &1799263177
 GameObject:
   m_ObjectHideFlags: 0

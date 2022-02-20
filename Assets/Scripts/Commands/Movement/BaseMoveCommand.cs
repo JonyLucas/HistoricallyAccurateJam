@@ -1,5 +1,5 @@
+using Game.Enums;
 using Game.Player;
-using System.Linq;
 using UnityEngine;
 
 namespace Game.Commands.Movement
@@ -11,8 +11,10 @@ namespace Game.Commands.Movement
 
         protected SpriteRenderer renderer;
         protected Animator animator;
-        protected PlayerMovement moveScript;
+        protected PlayerInput inputScript;
+        protected Rigidbody2D rigidbody;
 
+        public abstract MoveCommandType CommandType { get; }
         public abstract string AnimationParameter { get; }
         protected bool isInitialized = false;
 
@@ -38,11 +40,12 @@ namespace Game.Commands.Movement
         {
             renderer = gameObject.GetComponent<SpriteRenderer>();
             animator = gameObject.GetComponent<Animator>();
-            moveScript = gameObject.GetComponent<PlayerMovement>();
+            inputScript = gameObject.GetComponent<PlayerInput>();
+            rigidbody = gameObject.GetComponent<Rigidbody2D>();
         }
 
         protected abstract void ExecuteAction(GameObject gameObject);
 
-        //public abstract void FinishExecution()
+        public abstract void FinalizeAction(GameObject gameObject);
     }
 }

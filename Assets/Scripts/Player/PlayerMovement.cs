@@ -25,29 +25,16 @@ namespace Game.Player
         private Animator _animator;
         private AudioSource _audioSource;
 
-        private bool _canJump = true;
-        private bool _isFacingRight = true;
-        private bool _isMoving = false;
-        private bool _isCrouching = false;
-
-        public bool IsJumping
-        { get { return !_canJump; } }
-
-        public bool IsFacingRight
-        { get { return _isFacingRight; } }
-
-        public bool IsMoving
-        { get { return _isMoving; } }
-
-        public bool IsCrouching
-        { get { return _isCrouching; } }
+        public bool IsJumping { get; set; } = false;
+        public bool IsFacingRight { get; set; } = true;
+        public bool IsMoving { get; set; } = false;
+        public bool IsCrouching { get; set; } = false;
 
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
-            _control.InitializeCommands(gameObject);
         }
 
         private void Update()
@@ -77,24 +64,14 @@ namespace Game.Player
             }
 
             bool upMovement = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-            if (upMovement && _canJump)
+            if (upMovement && !IsJumping)
             {
                 _audioSource.clip = _jumpSfx.GetRandomSound();
                 _audioSource.Play();
-                _canJump = false;
+                IsJumping = true;
                 JumpMovement(null);
                 _animator.SetBool("isJumping", true);
                 //_rigidbody.AddForce(Vector2.up * _jumpForce);
-            }
-        }
-
-        // Check later
-        private void OnGUI()
-        {
-            Event e = Event.current;
-            if (e.isKey)
-            {
-                Debug.Log("Detected Key: " + e.keyCode);
             }
         }
 
@@ -103,14 +80,14 @@ namespace Game.Player
             if (command.GetType() == typeof(MoveRightCommand))
             {
                 command.Execute(gameObject);
-                _isFacingRight = true;
-                _isMoving = true;
+                IsFacingRight = true;
+                IsMoving = true;
             }
             else if (command.GetType() == typeof(MoveLeftCommand))
             {
                 command.Execute(gameObject);
-                _isFacingRight = false;
-                _isMoving = true;
+                IsFacingRight = false;
+                IsMoving = true;
             }
             else
             {
@@ -141,20 +118,20 @@ namespace Game.Player
             if (command.GetType() == typeof(CrouchCommand))
             {
                 command.Execute(gameObject);
-                _isCrouching = true;
+                IsCrouching = true;
             }
         }
 
         public void StopMovement()
         {
-            _isMoving = false;
-            _animator.SetBool("isWalking", _isMoving);
+            IsMoving = false;
+            _animator.SetBool("isWalking", IsMoving);
         }
 
         private void StopCrouching()
         {
-            _isCrouching = false;
-            _animator.SetBool("isCrouching", _isCrouching);
+            IsCrouching = false;
+            _animator.SetBool("isCrouching", IsCrouching);
             _rigidbody.simulated = true;
         }
 
@@ -168,7 +145,7 @@ namespace Game.Player
                     _audioSource.Play();
                 }
                 Debug.Log("END OF JUMP");
-                _canJump = true;
+                IsJumping = false;
                 _animator.SetBool("isJumping", IsJumping);
             }
         }

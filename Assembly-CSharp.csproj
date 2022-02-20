@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,11 +47,14 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.12</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.14</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2020.3.24f1</UnityVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <Analyzer Include="D:\Arquivos de Programas\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Props\Ground\BreakableGroundBehaviour.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Assets\Scripts\Props\Shots\GunshotMovement.cs" />
     <Compile Include="Assets\Scripts\SFX\AudioComponent.cs" />
     <Compile Include="Assets\Scripts\Props\Shots\ArrowMovement.cs" />
+    <Compile Include="Assets\Scripts\Commands\Movement\JumpCommand.cs" />
     <Compile Include="Assets\Scripts\Enums\CollectablesType.cs" />
     <Compile Include="Assets\Scripts\Props\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Observers\Listeners\GenericEventListener.cs" />
@@ -73,38 +77,41 @@
     <Compile Include="Assets\Scripts\Observers\Events\IntGameEvent.cs" />
     <Compile Include="Assets\Scripts\Collectables\CollectableActions.cs" />
     <Compile Include="Assets\Scripts\Props\Background\BackgroundMovement.cs" />
+    <Compile Include="Assets\Scripts\Commands\Attack\BaseAttackCommand.cs" />
+    <Compile Include="Assets\Scripts\Commands\Movement\MoveRightCommand.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\Commands\Movement\CrouchCommand.cs" />
+    <Compile Include="Assets\Scripts\Factories\MoveCommandFactory.cs" />
+    <Compile Include="Assets\Scripts\Commands\Movement\MoveLeftCommand.cs" />
     <Compile Include="Assets\Scripts\UI\TitleScreen\TitleScreenBackgroundAnimation.cs" />
     <Compile Include="Assets\Scripts\UI\Cutscene\CutsceneBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Enums\MoveCommandType.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\Dialog.cs" />
     <Compile Include="Assets\Scripts\Observers\Listeners\IntEventListener.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\LifeBar.cs" />
     <Compile Include="Assets\Scripts\Observers\Listeners\EventListener.cs" />
+    <Compile Include="Assets\Scripts\Commands\Attack\ShootCommand.cs" />
     <Compile Include="Assets\Scripts\Collectables\CollectableAnimations.cs" />
     <Compile Include="Assets\Scripts\Observers\Listeners\DialogEventListener.cs" />
+    <Compile Include="Assets\Scripts\Extensions\AnimatorExtension.cs" />
     <Compile Include="Assets\Scripts\Enemy\BaseEnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\Commands\BaseCommand.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\DialogUI.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\DisablePanelScript.cs" />
     <Compile Include="Assets\Scripts\Enemy\PortugueseEnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Observers\Events\GenericGameEvent.cs" />
+    <Compile Include="Assets\Scripts\Commands\KeylessBaseCommand.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Enemy\SpanishEnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Observers\Events\DialogEvent.cs" />
     <Compile Include="Assets\Scripts\Observers\Events\GameEvent.cs" />
+    <Compile Include="Assets\Scripts\Commands\Movement\BaseMoveCommand.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\ArrowCount.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\TypewriterEffect.cs" />
-    <Compile Include="Assets\Scripts\Commands\BaseCommand.cs" />
-    <Compile Include="Assets\Scripts\Commands\Attack\ShootCommand.cs" />
-    <Compile Include="Assets\Scripts\Commands\Movement\CrouchCommand.cs" />
-    <Compile Include="Assets\Scripts\Commands\Movement\MoveRightCommand.cs" />
-    <Compile Include="Assets\Scripts\Commands\Movement\MoveLeftCommand.cs" />
-    <Compile Include="Assets\Scripts\Commands\Movement\JumpCommand.cs" />
-    <Compile Include="Assets\Scripts\Commands\Movement\BaseMoveCommand.cs" />
-    <Compile Include="Assets\Scripts\Commands\Attack\BaseAttackCommand.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerControl.cs" />
-    <Compile Include="Assets\Scripts\Enums\MoveCommandType.cs" />
-    <Compile Include="Assets\Scripts\Factories\MoveCommandFactory.cs" />
-    <Compile Include="Assets\Scripts\Extensions\AnimatorExtension.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\Commands\Movement\WalkingCommand.cs" />
+    <Compile Include="Assets\Scripts\UI\Canvas\PauseMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -351,9 +358,6 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>D:\Arquivos de Programas\Unity\2020.3.24f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Arquivos de Programas\Unity\2020.3.24f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
