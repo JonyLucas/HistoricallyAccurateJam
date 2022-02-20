@@ -78,7 +78,7 @@ namespace Game.Player
             var arrow = _playerArrows.FirstOrDefault(x => !x.activeInHierarchy);
             if (arrow != null)
             {
-                _animator.SetTrigger("shoot");
+                _animator.SetBool("isShooting", true);
                 StartCoroutine(ShootCoroutine(arrow));
             }
         }
@@ -93,6 +93,7 @@ namespace Game.Player
         private IEnumerator ShootCoroutine(GameObject arrow)
         {
             yield return new WaitForSeconds(_animationDuration);
+            _animator.SetBool("isShooting", false);
 
             var arrowPosition = transform.position;
             arrowPosition.y += 0.2f;

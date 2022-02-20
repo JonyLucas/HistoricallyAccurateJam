@@ -1,4 +1,6 @@
 using Game.Audio;
+using Game.Commands;
+using Game.Commands.Movement;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,140 +8,84 @@ using UnityEngine;
 
 namespace Game.Player
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : PlayerInput
     {
-        [SerializeField]
-        private float _speed = 1;
-
-        [SerializeField]
-        private float _jumpForce = 350;
-
         [SerializeField]
         private SoundFx _jumpSfx;
 
         [SerializeField]
         private SoundFx _landingSfx;
 
-        private Rigidbody2D _rigidbody;
-        private SpriteRenderer _renderer;
-        private Animator _animator;
         private AudioSource _audioSource;
 
-        private bool _canJump = true;
-        private bool _isFacingRight = true;
-        private bool _isMoving = false;
-        private bool _isCrouching = false;
-
-        private float _moveDirection;
-        private float _crouchAnimationDuration;
-
-        public bool IsFacingRight
-        { get { return _isFacingRight; } }
-
-        public bool IsMoving
-        { get { return _isMoving; } }
-
-        public bool IsCrouching
-        { get { return _isCrouching; } }
+        public bool IsJumping { get; set; }
+        public bool IsOnGround { get; set; } = true;
+        public bool IsFacingRight { get; set; } = true;
+        public bool IsWalking { get; set; }
+        public bool IsCrouching { get; set; }
 
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _renderer = GetComponent<SpriteRenderer>();
-            _animator = GetComponent<Animator>();
-
-            _crouchAnimationDuration = _animator.runtimeAnimatorController
-                .animationClips
-                .FirstOrDefault(x => x.name == "player_squat").length;
         }
 
-        private void Update()
+        protected override void InitializeCommands()
         {
-            bool upMovement = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-            if (upMovement && _canJump)
+            commands = new List<BaseCommand>();
+            playerControl.MoveCommands.ForEach(command =>
             {
-                _audioSource.clip = _jumpSfx.GetRandomSound();
-                _audioSource.Play();
-                _canJump = false;
-                _animator.SetBool("isJumping", true);
-                _rigidbody.AddForce(Vector2.up * _jumpForce);
-            }
+                command.InitializeFields(gameObject);
+                commands.Add(command);
+            });
         }
 
-        private void FixedUpdate()
+        protected override void StopCommands()
         {
-            // Movements
-            _moveDirection = Input.GetAxisRaw("Horizontal");
-            if (_moveDirection != 0 && !_isCrouching)
+            if (IsWalking)
             {
-                Movement();
+                StopCommandType<MoveRightCommand>();
             }
-            else
+            if (IsJumping)
             {
-                StopMovement();
+                IsJumping = false;
+                StopCommandType<JumpCommand>();
             }
-
-            _moveDirection = Input.GetAxisRaw("Vertical");
-            if (_moveDirection < 0 && !_isMoving && _canJump)
+            if (IsCrouching)
             {
-                Crouching();
-            }
-            else
-            {
-                _isCrouching = false;
-                _animator.SetBool("isCrouching", _isCrouching);
-                _rigidbody.simulated = true;
+                StopCommandType<CrouchCommand>();
             }
         }
 
-        public void StopMovement()
+        private void StopCommandType<T>() where T : BaseMoveCommand
         {
-            _isMoving = false;
-            _animator.SetBool("isWalking", _isMoving);
-            _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
-        }
+            var command = commands
+                .FirstOrDefault(command => command.GetType() == typeof(T));
 
-        private void Movement()
-        {
-            _isMoving = true;
-            _rigidbody.velocity = new Vector2(_moveDirection * _speed, _rigidbody.velocity.y);
-            _animator.SetBool("isWalking", _isMoving);
-
-            // Animations
-            if (_moveDirection > 0 && !_isFacingRight || _moveDirection < 0 && _isFacingRight)
+            if (command != null)
             {
-                _renderer.flipX = _isFacingRight;
-                _isFacingRight = !_isFacingRight;
+                ((BaseMoveCommand)command).FinalizeAction(gameObject);
             }
-        }
-
-        private void Crouching()
-        {
-            StopMovement();
-            _animator.SetBool("isCrouching", _isCrouching);
-            _isCrouching = true;
-            _rigidbody.simulated = false;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.transform.CompareTag("Ground"))
             {
-                if (!_canJump)
+                if (IsJumping)
                 {
                     _audioSource.clip = _landingSfx.GetRandomSound();
                     _audioSource.Play();
                 }
-                _canJump = true;
-                _animator.SetBool("isJumping", false);
+                StartCoroutine(StopJumpCoroutine());
             }
         }
 
-        public void PlayerDeath()
+        private IEnumerator StopJumpCoroutine()
         {
-            StopMovement();
-            enabled = false;
+            IsOnGround = true;
+            StopCommandType<JumpCommand>();
+            yield return new WaitForSeconds(1f);
+            IsJumping = false;
         }
     }
 }

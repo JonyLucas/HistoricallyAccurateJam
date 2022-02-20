@@ -53,11 +53,11 @@ namespace Game.Props
             _collider.enabled = false;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             var gravityMovement = Vector2.down * _gravity;
             var horizontalMovement = MoveDirection * _speed;
-            transform.Translate((gravityMovement + horizontalMovement) * Time.fixedDeltaTime);
+            transform.Translate((gravityMovement + horizontalMovement) * Time.deltaTime);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

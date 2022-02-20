@@ -24,7 +24,7 @@ namespace Game.Enviroment
 
         private void Update()
         {
-            if (_movementScript != null && _movementScript.IsMoving)
+            if (_movementScript != null && _movementScript.IsWalking)
             {
                 var moveDirection = !_movementScript.IsFacingRight ? Vector2.right : Vector2.left;
                 transform.Translate(moveDirection * _speed * Time.deltaTime);

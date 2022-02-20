@@ -20,7 +20,8 @@ namespace Game.Camera
         // Update is called once per frame
         private void Update()
         {
-            transform.position = Vector3.Slerp(transform.position, _player.transform.position + _playerDistance, _followRate);
+            transform.position = Vector3.Lerp(transform.position, _player.transform.position + _playerDistance, _followRate * Time.deltaTime);
+            //transform.position = _player.transform.position + _playerDistance;
         }
     }
 }

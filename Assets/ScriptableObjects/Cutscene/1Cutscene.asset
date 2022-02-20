@@ -17,8 +17,8 @@ MonoBehaviour:
     _text: In 1534, the order of the Society of Jesus was founded in Spain to spread
       the Catholic faith and European customs to the native people of South America.
   - _image: {fileID: 21300000, guid: f931ab8799bba384faed31a3f164a6d1, type: 3}
-    _text: In the so-called "reductions", the Jesuits gathered the Indians to work
-      in the countryside and in craft and educational activities.
+    _text: In the so-called "reductions", the Jesuits gathered the indigenous people
+      to work in the countryside and in craft and educational activities.
   - _image: {fileID: 21300000, guid: b55f9683144dddd41975f5cb65f93e44, type: 3}
     _text: In 1750, Portugal and Spain signed the Treaty of Madrid, which transferred
       Portugal's Colonia de Sacramento to Spain, in exchange for the Seven Reductions

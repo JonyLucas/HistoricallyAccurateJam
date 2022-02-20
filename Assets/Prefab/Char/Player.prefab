@@ -102,8 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4ebc57b6e3ff94eb3a8650e2fbb779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
-  _jumpForce: 240
+  playerControl: {fileID: 11400000, guid: 63773a3a4c78f3849b3f096f07c9304b, type: 2}
   _jumpSfx: {fileID: 11400000, guid: abef093997562a7419438a3ade1b48fa, type: 2}
   _landingSfx: {fileID: 11400000, guid: 3a4c300155013fb4bac5d7292b3fc900, type: 2}
 --- !u!50 &4527445841175158653
@@ -118,12 +117,12 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.45
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 89ffd39ada8ead5499e4106212d12b18, type: 2}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
