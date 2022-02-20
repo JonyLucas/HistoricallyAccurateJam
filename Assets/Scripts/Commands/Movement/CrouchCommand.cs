@@ -20,7 +20,7 @@ namespace Game.Commands.Movement
 
         protected override async void ExecuteAction(GameObject gameObject)
         {
-            inputScript.IsCrouching = true;
+            moveScript.IsCrouching = true;
             animator.SetBool(AnimationParameter, true);
             await Task.Delay((int)(_animationDuration / 2 * 1000));
 
@@ -32,7 +32,7 @@ namespace Game.Commands.Movement
 
         protected override bool ExecutionCodition(GameObject gameObject)
         {
-            return !inputScript.IsWalking && !inputScript.IsJumping && !inputScript.IsPaused;
+            return !moveScript.IsWalking && !moveScript.IsJumping && !moveScript.IsPaused;
         }
 
         public override void InitializeFields(GameObject gameObject)
@@ -43,7 +43,9 @@ namespace Game.Commands.Movement
 
         public override void FinalizeAction(GameObject gameObject)
         {
-            throw new NotImplementedException();
+            moveScript.IsCrouching = false;
+            animator.SetBool(AnimationParameter, moveScript.IsCrouching);
+            rigidbody.simulated = true;
         }
     }
 }

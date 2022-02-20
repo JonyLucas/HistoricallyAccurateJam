@@ -11,7 +11,7 @@ namespace Game.Commands.Movement
 
         protected SpriteRenderer renderer;
         protected Animator animator;
-        protected PlayerInput inputScript;
+        protected PlayerMovement moveScript;
         protected Rigidbody2D rigidbody;
 
         public abstract MoveCommandType CommandType { get; }
@@ -40,7 +40,7 @@ namespace Game.Commands.Movement
         {
             renderer = gameObject.GetComponent<SpriteRenderer>();
             animator = gameObject.GetComponent<Animator>();
-            inputScript = gameObject.GetComponent<PlayerInput>();
+            moveScript = gameObject.GetComponent<PlayerMovement>();
             rigidbody = gameObject.GetComponent<Rigidbody2D>();
         }
 

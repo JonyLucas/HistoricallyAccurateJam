@@ -1,3 +1,4 @@
+using Game.Commands;
 using Game.Commands.Movement;
 using Game.Player.ScriptableObjects;
 using Game.UI;
@@ -7,64 +8,52 @@ using UnityEngine;
 
 namespace Game.Player
 {
-    public class PlayerInput : MonoBehaviour
+    public abstract class PlayerInput : MonoBehaviour
     {
         // Fields
 
         [SerializeField]
-        private PlayerControl _control;
+        protected PlayerControl playerControl;
 
-        private List<BaseMoveCommand> _moveCommands;
+        protected List<BaseCommand> commands;
 
         // Properties
 
-        public bool IsWalking { get; set; }
-        public bool IsJumping { get; set; }
-        public bool IsCrouching { get; set; }
         public bool IsPaused { get; set; }
-
-        private void Start()
-        {
-            _moveCommands = _control.MoveCommands;
-            _moveCommands.ForEach(command => command.InitializeFields(gameObject));
-
-            PauseMenu.OpenWindowEvent += PauseMovement;
-        }
 
         private void FixedUpdate()
         {
             if (Input.anyKey && !IsPaused)
             {
-                var command = _moveCommands.FirstOrDefault(command => Input.GetKey(command.AssociatedKey));
+                var executionCommands = commands.Where(command => Input.GetKey(command.AssociatedKey));
 
-                if (command != null)
+                if (executionCommands.Any())
                 {
-                    command.Execute(gameObject);
+                    foreach (var command in executionCommands)
+                    {
+                        command.Execute(gameObject);
+                    }
                 }
             }
             else
             {
-                if (IsWalking)
-                {
-                    StopMovement();
-                }
+                StopCommands();
             }
         }
 
-        public void StopMovement()
+        private void Start()
         {
-            var command = _moveCommands
-            .FirstOrDefault(command => command.GetType().BaseType == typeof(WalkingCommand));
-
-            if (command != null)
-            {
-                command.FinalizeAction(gameObject);
-            }
+            InitializeCommands();
+            PauseMenu.OpenWindowEvent += PauseMovement;
         }
+
+        protected abstract void InitializeCommands();
+
+        protected abstract void StopCommands();
 
         public void PlayerDeath()
         {
-            StopMovement();
+            StopCommands();
             enabled = false;
         }
 

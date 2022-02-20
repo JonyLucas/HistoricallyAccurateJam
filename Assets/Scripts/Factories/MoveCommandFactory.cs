@@ -28,7 +28,10 @@ namespace Game.Commands.Factories
                     return new MoveRightCommand(_associatedKey, _moveSpeed);
 
                 case MoveCommandType.Crouch:
-                    return new CrouchCommand(_associatedKey, _moveSpeed); // Incluir o Jump
+                    return new CrouchCommand(_associatedKey, _moveSpeed);
+
+                case MoveCommandType.Jump:
+                    return new JumpCommand(_associatedKey, _moveSpeed);
 
                 default:
                     return null;

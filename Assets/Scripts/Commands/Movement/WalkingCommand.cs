@@ -13,9 +13,10 @@ namespace Game.Commands.Movement
 
         protected override void ExecuteAction(GameObject gameObject)
         {
-            inputScript.IsWalking = true;
+            moveScript.IsWalking = true;
+            moveScript.IsFacingRight = MoveDirection == Vector2.right;
             animator.SetBool(AnimationParameter, true);
-            renderer.flipX = MoveDirection == Vector2.left;
+            renderer.flipX = !moveScript.IsFacingRight;
 
             var velocity = speed * MoveDirection;
             velocity.y = rigidbody.velocity.y;
@@ -24,12 +25,12 @@ namespace Game.Commands.Movement
 
         protected override bool ExecutionCodition(GameObject gameObject)
         {
-            return !inputScript.IsCrouching && !inputScript.IsPaused;
+            return !moveScript.IsCrouching && !moveScript.IsPaused;
         }
 
         public override void FinalizeAction(GameObject gameObject)
         {
-            inputScript.IsWalking = false;
+            moveScript.IsWalking = false;
             animator.SetBool(AnimationParameter, false);
 
             var velocity = Vector2.zero;
