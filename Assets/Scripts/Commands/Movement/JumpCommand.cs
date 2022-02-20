@@ -8,28 +8,50 @@ namespace Game.Commands.Movement
         public override MoveCommandType CommandType { get => MoveCommandType.Jump; }
         public override string AnimationParameter { get => "isJumping"; }
 
+        private bool _isVariableJump = false;
+        private Vector2 _jumpForce;
+
         public JumpCommand(KeyCode associatedKey, float speedValue) : base(associatedKey, speedValue)
         {
+        }
+
+        public override void InitializeFields(GameObject gameObject)
+        {
+            base.InitializeFields(gameObject);
+            _jumpForce = rigidbody.gravityScale * rigidbody.mass * -Physics2D.gravity;
         }
 
         protected override void ExecuteAction(GameObject gameObject)
         {
             moveScript.IsJumping = true;
+            moveScript.IsOnGround = false;
             animator.SetBool(AnimationParameter, true);
-            var forceScale = -Physics2D.gravity * rigidbody.gravityScale * rigidbody.mass;
-            Debug.Log(forceScale);
-            rigidbody.AddForce(Vector2.up * 500);
+
+            rigidbody.AddForce(_jumpForce * speed);
         }
 
         public override void FinalizeAction(GameObject gameObject)
         {
-            moveScript.IsJumping = false;
-            animator.SetBool(AnimationParameter, false);
+            if (!moveScript.IsOnGround && !_isVariableJump)
+            {
+                var velocity = rigidbody.velocity;
+                if (velocity.y > 0)
+                {
+                    velocity.y /= 2;
+                    rigidbody.velocity = velocity;
+                    _isVariableJump = true;
+                }
+            }
+            else if (moveScript.IsOnGround)
+            {
+                animator.SetBool(AnimationParameter, false);
+                _isVariableJump = false;
+            }
         }
 
         protected override bool ExecutionCodition(GameObject gameObject)
         {
-            return !moveScript.IsJumping;
+            return !moveScript.IsJumping && moveScript.IsOnGround;
         }
     }
 }

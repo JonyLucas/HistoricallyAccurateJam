@@ -32222,7 +32222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e13e5d4d00d634884385bd29425f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followRate: 0.1
+  _followRate: 3
 --- !u!114 &1194732980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32307,14 +32307,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194732975}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 32
-  m_RefResolutionX: 640
-  m_RefResolutionY: 360
+  m_RefResolutionX: 240
+  m_RefResolutionY: 240
   m_UpscaleRT: 0
   m_PixelSnapping: 0
   m_CropFrameX: 0
@@ -51530,18 +51530,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4527445840629805144, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527445841175158651, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
-      propertyPath: _control
-      value: 
-      objectReference: {fileID: 11400000, guid: 63773a3a4c78f3849b3f096f07c9304b, type: 2}
-    - target: {fileID: 4527445841175158651, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4527445841175158652, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -51587,16 +51575,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4527445841175158653, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527445841175158653, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
       propertyPath: m_BodyType
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527445841175158653, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4527445841175158654, guid: e1fccfcbdf475014eb084ce59e4e0704, type: 3}
       propertyPath: m_Name

@@ -18,10 +18,11 @@ namespace Game.Player
         private Animator _animator;
         private AudioSource _audioSource;
 
-        public bool IsJumping { get; set; } = false;
+        public bool IsJumping { get; set; }
+        public bool IsOnGround { get; set; } = true;
         public bool IsFacingRight { get; set; } = true;
-        public bool IsWalking { get; set; } = false;
-        public bool IsCrouching { get; set; } = false;
+        public bool IsWalking { get; set; }
+        public bool IsCrouching { get; set; }
 
         private void Awake()
         {
@@ -44,6 +45,11 @@ namespace Game.Player
             if (IsWalking)
             {
                 StopCommandType<MoveRightCommand>();
+            }
+            if (IsJumping)
+            {
+                IsJumping = false;
+                StopCommandType<JumpCommand>();
             }
         }
 
@@ -68,6 +74,7 @@ namespace Game.Player
                     _audioSource.Play();
                 }
 
+                IsOnGround = true;
                 StopCommandType<JumpCommand>();
             }
         }
