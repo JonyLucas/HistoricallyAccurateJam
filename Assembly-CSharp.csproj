@@ -71,8 +71,10 @@
     <Compile Include="Assets\Scripts\UI\Cutscene\CutsceneFrame.cs" />
     <Compile Include="Assets\Scripts\UI\Cutscene\Frame.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Commands\Movement\WalkingCommand.cs" />
     <Compile Include="Assets\Scripts\SFX\SoundFx.cs" />
     <Compile Include="Assets\Scripts\UI\TitleScreen\TimedFadeIn.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\ScriptableDialog.cs" />
     <Compile Include="Assets\Scripts\Observers\Events\IntGameEvent.cs" />
     <Compile Include="Assets\Scripts\Collectables\CollectableActions.cs" />
@@ -105,13 +107,11 @@
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Enemy\SpanishEnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Observers\Events\DialogEvent.cs" />
+    <Compile Include="Assets\Scripts\UI\Canvas\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Observers\Events\GameEvent.cs" />
     <Compile Include="Assets\Scripts\Commands\Movement\BaseMoveCommand.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\ArrowCount.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\TypewriterEffect.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
-    <Compile Include="Assets\Scripts\Commands\Movement\WalkingCommand.cs" />
-    <Compile Include="Assets\Scripts\UI\Canvas\PauseMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

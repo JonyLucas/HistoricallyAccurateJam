@@ -1,6 +1,7 @@
 using Game.Audio;
 using Game.Commands;
 using Game.Commands.Movement;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -75,10 +76,16 @@ namespace Game.Player
                     _audioSource.clip = _landingSfx.GetRandomSound();
                     _audioSource.Play();
                 }
-
-                IsOnGround = true;
-                StopCommandType<JumpCommand>();
+                StartCoroutine(StopJumpCoroutine());
             }
+        }
+
+        private IEnumerator StopJumpCoroutine()
+        {
+            IsOnGround = true;
+            StopCommandType<JumpCommand>();
+            yield return new WaitForSeconds(1f);
+            IsJumping = false;
         }
     }
 }
