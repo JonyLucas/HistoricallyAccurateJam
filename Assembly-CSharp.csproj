@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\SFX\SoundFx.cs" />
     <Compile Include="Assets\Scripts\UI\TitleScreen\TimedFadeIn.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\Props\Background\ParallaxBackground.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\ScriptableDialog.cs" />
     <Compile Include="Assets\Scripts\Observers\Events\IntGameEvent.cs" />
     <Compile Include="Assets\Scripts\Collectables\CollectableActions.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Assets\Scripts\Commands\Movement\BaseMoveCommand.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\ArrowCount.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\TypewriterEffect.cs" />
+    <Compile Include="Assets\Scripts\UI\Canvas\UIInputManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
