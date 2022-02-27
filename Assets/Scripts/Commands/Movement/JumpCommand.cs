@@ -26,7 +26,6 @@ namespace Game.Commands.Movement
             moveScript.IsJumping = true;
             moveScript.IsOnGround = false;
             animator.SetBool(AnimationParameter, true);
-
             rigidbody.AddForce(_jumpForce * speed);
         }
 
@@ -45,6 +44,7 @@ namespace Game.Commands.Movement
             else if (moveScript.IsOnGround)
             {
                 animator.SetBool(AnimationParameter, false);
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0.0f);
                 _isVariableJump = false;
             }
         }

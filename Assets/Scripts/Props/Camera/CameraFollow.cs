@@ -8,18 +8,6 @@ namespace Game.CameraScripts
         private float _followRate;
 
         [SerializeField]
-        private float _boundsMinX;
-
-        [SerializeField]
-        private float _boundsMaxX;
-
-        [SerializeField]
-        private float _boundsMinY;
-
-        [SerializeField]
-        private float _boundsMaxY;
-
-        [SerializeField]
         private float _offsetX;
 
         [SerializeField]
@@ -38,11 +26,7 @@ namespace Game.CameraScripts
         private void Update()
         {
             transform.position += ((_player.transform.position + _offsetY * Vector3.up + _offsetX * Vector3.right) - transform.position)*_followRate;
-            transform.position = new Vector3(
-                Mathf.Clamp(transform.position.x, _boundsMinX, _boundsMaxX),
-                Mathf.Clamp(transform.position.y, _boundsMinY, _boundsMaxY),
-                _cameraZ
-            );
+            transform.position = new Vector3(transform.position.x, transform.position.y, _cameraZ);
         }
     }
 }

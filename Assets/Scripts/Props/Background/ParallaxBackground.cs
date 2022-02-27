@@ -12,7 +12,7 @@ namespace Game.Enviroment
 
         // Se isso for editável pela interface do Unity, tem que ser em um objeto tipo a câmera.
         // Não pode ser por instância do ParallelBackground, senão o efeito será quebrado!
-        private const float SCALE = 10.0f;
+        private const float SCALE = 1.0f;
 
         // Start is called before the first frame update
         private void Start()

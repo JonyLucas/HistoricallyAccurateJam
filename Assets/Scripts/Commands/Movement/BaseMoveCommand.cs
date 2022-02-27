@@ -16,6 +16,10 @@ namespace Game.Commands.Movement
 
         public abstract MoveCommandType CommandType { get; }
         public abstract string AnimationParameter { get; }
+
+        public float Speed
+        { get { return speed; } }
+
         protected bool isInitialized = false;
 
         protected BaseMoveCommand(KeyCode associatedKey, float speedValue) : base(associatedKey)

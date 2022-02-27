@@ -79,7 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: -1080642963
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7084667215702463454, guid: dd9ca2ff59d85df4ab5b13191fc4600d, type: 3}
+  m_Sprite: {fileID: 7084667215702463454, guid: dd9ca2ff59d85df4ab5b13191fc4600d,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,7 +186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxArrowCount: 5
   _fireRate: 1
-  _arrowPrefab: {fileID: 2594710220706420174, guid: 90ca662e602dc6146af69912fdd71fc4, type: 3}
+  _arrowPrefab: {fileID: 2594710220706420174, guid: 90ca662e602dc6146af69912fdd71fc4,
+    type: 3}
   _soundFx: {fileID: 11400000, guid: 4775d940380947540a9dd5edb86f2ace, type: 2}
   _arrowShootEvent: {fileID: 11400000, guid: fe786783101d333418a6e1b2f89e77d0, type: 2}
 --- !u!114 &4527445841175158630
