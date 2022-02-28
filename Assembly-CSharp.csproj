@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Props\Ground\BreakableGroundBehaviour.cs" />
+    <Compile Include="Assets\Scripts\UI\Canvas\ControlMapping\UpdateKeysOnEnable.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\FadeOut.cs" />
     <Compile Include="Assets\Scripts\Scenes\ChangeSceneScript.cs" />
@@ -73,8 +74,9 @@
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Commands\Movement\WalkingCommand.cs" />
     <Compile Include="Assets\Scripts\SFX\SoundFx.cs" />
-    <Compile Include="Assets\Scripts\UI\TitleScreen\TimedFadeIn.cs" />
+    <Compile Include="Assets\Scripts\UI\TitleScreen\TimedEnableObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\Props\Background\ParallaxBackground.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\ScriptableDialog.cs" />
     <Compile Include="Assets\Scripts\Observers\Events\IntGameEvent.cs" />
     <Compile Include="Assets\Scripts\Collectables\CollectableActions.cs" />
@@ -87,6 +89,8 @@
     <Compile Include="Assets\Scripts\Commands\Movement\MoveLeftCommand.cs" />
     <Compile Include="Assets\Scripts\UI\TitleScreen\TitleScreenBackgroundAnimation.cs" />
     <Compile Include="Assets\Scripts\UI\Cutscene\CutsceneBehaviour.cs" />
+    <Compile Include="Assets\Scripts\UI\Canvas\UIInputManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Canvas\ControlMapping\ChangeAssociatedKey.cs" />
     <Compile Include="Assets\Scripts\Enums\MoveCommandType.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\Dialog.cs" />
     <Compile Include="Assets\Scripts\Observers\Listeners\IntEventListener.cs" />
@@ -112,6 +116,8 @@
     <Compile Include="Assets\Scripts\Commands\Movement\BaseMoveCommand.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\ArrowCount.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\TypewriterEffect.cs" />
+    <Compile Include="Assets\Scripts\UI\TitleScreen\FadeInOnEnable.cs" />
+    <Compile Include="Assets\Scripts\Props\Camera\CameraBounds.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

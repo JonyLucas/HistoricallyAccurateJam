@@ -21,12 +21,13 @@ namespace Game.Props
         private float _gravity = 1;
         private bool _afterShot = true;
         private bool _hitGround = false;
-
+        
         private Rigidbody2D _rigidbody;
         private BoxCollider2D _collider;
         private BoxCollider2D _trigger;
         private SpriteRenderer _renderer;
         private GameObject _mainCamera;
+        private PlayerAttack _playerAttack;
 
         public Vector2 MoveDirection { get; set; } = Vector2.right;
 
@@ -38,6 +39,7 @@ namespace Game.Props
             _rigidbody = GetComponent<Rigidbody2D>();
             _trigger = GetComponents<BoxCollider2D>().FirstOrDefault(x => x.isTrigger);
             _collider = GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger);
+            _playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
         }
 
         private void OnEnable()
@@ -77,7 +79,6 @@ namespace Game.Props
             if (collision.transform.CompareTag("Player") && !_afterShot)
             {
                 gameObject.SetActive(false);
-                collision.gameObject.GetComponent<PlayerAttack>().UpdateArrowCount();
             }
         }
 
@@ -103,6 +104,11 @@ namespace Game.Props
                 _rigidbody.bodyType = RigidbodyType2D.Kinematic;
                 _collider.enabled = false;
             }
+        }
+
+        private void OnDisable()
+        {
+            _playerAttack.UpdateArrowCount();
         }
     }
 }

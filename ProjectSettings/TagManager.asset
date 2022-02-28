@@ -57,12 +57,15 @@ TagManager:
   - name: Woods
     uniqueID: 1787377699
     locked: 0
-  - name: Foreground
-    uniqueID: 3847604783
+  - name: MiddleGround
+    uniqueID: 152398283
     locked: 0
   - name: Characters
     uniqueID: 3214324333
     locked: 0
   - name: Props
     uniqueID: 1369261925
+    locked: 0
+  - name: Foreground
+    uniqueID: 3847604783
     locked: 0

@@ -1,9 +1,13 @@
+using Game.ScriptableObjects.Events;
 using UnityEngine;
 
 namespace Game.UI.Animation
 {
     public class TitleScreenBackgroundAnimation : MonoBehaviour
     {
+        [SerializeField]
+        private GameEvent _event;
+
         [SerializeField]
         private Vector3 _initialPosition;
 
@@ -26,13 +30,14 @@ namespace Game.UI.Animation
         {
             if (_isMoving)
             {
-                transform.position = Vector3.Slerp(transform.position, _finalPosition, _moveRate);
+                transform.position = Vector3.Lerp(transform.position, _finalPosition, _moveRate);
             }
 
-            if (Vector3.Distance(transform.position, _finalPosition) < 1f)
+            if (Vector3.Distance(transform.position, _finalPosition) < 0.2f)
             {
                 transform.position = _finalPosition;
                 _isMoving = false;
+                _event.OnOcurred();
             }
         }
     }

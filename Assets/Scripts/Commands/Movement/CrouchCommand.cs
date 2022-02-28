@@ -27,7 +27,7 @@ namespace Game.Commands.Movement
 
         protected override bool ExecutionCodition(GameObject gameObject)
         {
-            return !moveScript.IsWalking && !moveScript.IsJumping && !moveScript.IsPaused;
+            return moveScript.IsOnGround && !moveScript.IsWalking && !moveScript.IsJumping && !moveScript.IsPaused;
         }
 
         public override void InitializeFields(GameObject gameObject)

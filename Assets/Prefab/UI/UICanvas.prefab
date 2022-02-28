@@ -358,8 +358,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 2.8, y: 0.6}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7973194567975036773
 CanvasRenderer:
@@ -922,7 +922,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5337799985815785412, guid: b50a78e1927b4c241928a7ebdcd36b4d, type: 3}
+  m_Sprite: {fileID: 5337799985815785412, guid: b50a78e1927b4c241928a7ebdcd36b4d,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1144,7 +1145,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 1.2
   m_Text: 'Every year the settlers are killing us and taking our land. They arrive,
     destroy our forests, kill the animals, pollute our waters. They arrive bringing
     destruction wherever they go. '
@@ -1226,6 +1227,7 @@ GameObject:
   - component: {fileID: 7973194568538600447}
   - component: {fileID: 7973194568538600444}
   - component: {fileID: 7973194568538600446}
+  - component: {fileID: 2304670309125388805}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1249,8 +1251,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
+  m_AnchoredPosition: {x: 53.52559, y: 5.204302}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7973194568538600447
 CanvasRenderer:
@@ -1273,7 +1275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
+  m_Color: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1306,6 +1308,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d3c62f2ee3f984aa6c1f5b5bba528a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2304670309125388805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973194568538600442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7973194568739541880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,7 +1392,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8118557757861841130, guid: b3574471cd39bd44eacd51c75c9fbe1f, type: 3}
+  m_Sprite: {fileID: -8118557757861841130, guid: b3574471cd39bd44eacd51c75c9fbe1f,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1467,7 +1485,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7791245596870935262, guid: fcd6bd28acfa0da4fb79cf3c8d3d9d5d, type: 3}
+  m_Sprite: {fileID: 7791245596870935262, guid: fcd6bd28acfa0da4fb79cf3c8d3d9d5d,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1590,7 +1609,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5337799985815785412, guid: b50a78e1927b4c241928a7ebdcd36b4d, type: 3}
+  m_Sprite: {fileID: 5337799985815785412, guid: b50a78e1927b4c241928a7ebdcd36b4d,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
