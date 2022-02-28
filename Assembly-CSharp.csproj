@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Factories\MoveCommandFactory.cs" />
     <Compile Include="Assets\Scripts\Commands\Movement\MoveLeftCommand.cs" />
     <Compile Include="Assets\Scripts\UI\TitleScreen\TitleScreenBackgroundAnimation.cs" />
+    <Compile Include="Assets\Scripts\UI\TitleScreen\FadeInOnEnable.cs" />
     <Compile Include="Assets\Scripts\UI\Cutscene\CutsceneBehaviour.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\UIInputManager.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\ControlMapping\ChangeAssociatedKey.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Assets\Scripts\Observers\Listeners\DialogEventListener.cs" />
     <Compile Include="Assets\Scripts\Extensions\AnimatorExtension.cs" />
     <Compile Include="Assets\Scripts\Enemy\BaseEnemyAttack.cs" />
+    <Compile Include="Assets\Scripts\Props\Camera\CameraBounds.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Commands\BaseCommand.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\DialogUI.cs" />
@@ -116,8 +118,10 @@
     <Compile Include="Assets\Scripts\Commands\Movement\BaseMoveCommand.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\ArrowCount.cs" />
     <Compile Include="Assets\Scripts\UI\Dialog\TypewriterEffect.cs" />
-    <Compile Include="Assets\Scripts\UI\TitleScreen\FadeInOnEnable.cs" />
-    <Compile Include="Assets\Scripts\Props\Camera\CameraBounds.cs" />
+    <Compile Include="Assets\Scripts\UI\Dialog\DialogManager.cs" />
+    <Compile Include="Assets\Scripts\Enums\Languages.cs" />
+    <Compile Include="Assets\Scripts\UI\Dialog\DialogLanguage.cs" />
+    <Compile Include="Assets\Scripts\UI\Dialog\LanguageSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
